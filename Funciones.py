@@ -34,3 +34,6 @@ def Buscar_Director():
             encontrado=True
     if (encontrado==False):
         print("No se encontro director",director)
+
+def menu():
+    print("1.Ver peliculas")
