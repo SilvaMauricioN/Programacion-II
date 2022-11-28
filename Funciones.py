@@ -35,10 +35,8 @@ def Buscar_Director():
     if (encontrado==False):
         print("No se encontro director",director)
 
-<<<<<<< HEAD
 def menu():
     print("1.Ver peliculas")
-=======
 
 def Eliminar_Pelicula():
 
@@ -67,4 +65,3 @@ def Eliminar_Pelicula():
     if (encontrado==False):
         print('La pelicula no existe')
         
->>>>>>> 6535a760addd008659737337bf7706704c4cbf36
