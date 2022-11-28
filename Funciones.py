@@ -35,5 +35,36 @@ def Buscar_Director():
     if (encontrado==False):
         print("No se encontro director",director)
 
+<<<<<<< HEAD
 def menu():
     print("1.Ver peliculas")
+=======
+
+def Eliminar_Pelicula():
+
+    titulo = input("Nombre de pelicula a eliminar: ")
+    #Variable de Control
+    encontrado=False
+
+    with open ('Peliculas.json','r',encoding='utf-8') as archivo:
+        Peliculas = json.load(archivo)
+
+    for i in Peliculas['Movies']:
+
+        if titulo.upper() == i['titulo'].upper():
+            encontrado=True
+            if len(i['criticas']) == 0:
+
+                Peliculas['Movies'].remove(i)
+                print(titulo, 'eliminada del registro')               
+
+                with open ('peliculas.json', 'w', encoding='utf-8')as archivo:
+                    json.dump(Peliculas, archivo, indent=4, ensure_ascii = False)
+
+            else:    
+                print('No se puede eliminar ', titulo,' incluye comentarios')
+                
+    if (encontrado==False):
+        print('La pelicula no existe')
+        
+>>>>>>> 6535a760addd008659737337bf7706704c4cbf36
