@@ -17,8 +17,6 @@ def Ultimas_Peliculas():
     for i in Peliculas['Movies'][indice:]:
         print(i['titulo'])
 
-
-
 #funcion para buscar peliculas por nombre de director
 def Buscar_Director():
 
@@ -34,3 +32,4 @@ def Buscar_Director():
             encontrado=True
     if (encontrado==False):
         print("No se encontro director",director)
+
