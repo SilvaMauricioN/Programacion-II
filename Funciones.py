@@ -33,3 +33,6 @@ def Buscar_Director():
     if (encontrado==False):
         print("No se encontro director",director)
 
+def modificar_peliculas():
+    #en proceso
+    return None
