@@ -2,3 +2,4 @@ import Funciones
 
 Funciones.Buscar_Director
 Funciones.Buscar_Director
+Funciones.Eliminar_Pelicula
