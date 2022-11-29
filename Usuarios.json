@@ -11,12 +11,12 @@
         },
         {
             "id":"002",
-            "Nombre":"",
-            "Apellido":"",
-            "Dni":"",
-            "Email":"",
-            "User_name":"",
-            "Contraseña":""
+            "Nombre":"Julian",
+            "Apellido":"Contreras",
+            "Dni":"40432162",
+            "Email":"julian23-cj@hotmail.com",
+            "User_name":"julian23cj",
+            "Contraseña":"123456"
         },
         {
             "id":"003",

@@ -33,7 +33,7 @@ def Buscar_Director():
     if (encontrado==False):
         print("No se encontro director",director)
 
-<<<<<<< HEAD
+
 def modificar_peliculas():
     #en proceso
     return None
@@ -56,9 +56,6 @@ def menu_usuario():
     opcion= control_de_entrada_usuario()
     return opcion
 
-def menu_publico():
-    print("------ Menu Publico ------\n"
-    "")
 
 # Usuarios
 def ingreso_usuario():
@@ -73,6 +70,9 @@ def ingreso_usuario():
 
     return usuario, contraseña
 
+def comprovar_usuario():
+    print("en espera")
+
 #Control de errores y verificación
 
 def control_de_entrada_usuario():
@@ -83,13 +83,6 @@ def control_de_entrada_usuario():
             return entero
         except ValueError:
             print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 5010199c582347b527ea6b479df9a2f3b0f998b4
-def menu():
-    print("1.Ver peliculas")
 
 def Eliminar_Pelicula():
 
@@ -117,5 +110,4 @@ def Eliminar_Pelicula():
                 
     if (encontrado==False):
         print('La pelicula no existe')
-        
->>>>>>> main
+    
