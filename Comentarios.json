@@ -1,0 +1,50 @@
+{
+    "criticas":[{
+        "Nombre_pelicula":"",
+        "id_pelicula":"",
+        "comentarios":[
+            {
+                "id_usuario":"001",
+                "nombre":"Mauricio Nicolas",
+                "opinion":"Excelente"
+            },
+            {
+                "id_usuario":"002",
+                "nombre":"Julian",
+                "opinion":"Malisima"}
+    ]},
+
+    {
+        "Nombre_pelicula":"",
+        "id_pelicula":"",
+        "comentarios":[
+            {
+                "id_usuario":"001",
+                "nombre":"Mauricio Nicolas",
+                "opinion":"Excelente"
+            }
+    ]},
+
+    {
+        "Nombre_pelicula":"",
+        "id_pelicula":"",
+        "comentarios":[
+            {
+                "id_usuario":"001",
+                "nombre":"Mauricio Nicolas",
+                "opinion":"Excelente"
+            }
+    ]},
+
+    {
+        "Nombre_pelicula":"",
+        "id_pelicula":"",
+        "comentarios":[
+            {
+                "id_usuario":"001",
+                "nombre":"Mauricio Nicolas",
+                "opinion":"Excelente"
+            }
+    ]}   
+]
+}

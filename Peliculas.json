@@ -34,29 +34,8 @@
             "genero":"Fantasia",
             "sinopsis":"En la Tierra Media, el Señor Oscuro Sauron ordenó a los Elfos que forjaran los Grandes Anillos de Poder. Tres para los reyes Elfos, siete para los Señores Enanos, y nueve para los Hombres Mortales. Pero Saurón también forjó, en secreto, el Anillo Único, que tiene el poder de esclavizar toda la Tierra Media. Con la ayuda de sus amigos y de valientes aliados, el joven hobbit Frodo emprende un peligroso viaje con la misión de destruir el Anillo Único. Pero el malvado Sauron ordena la persecución del grupo, compuesto por Frodo y sus leales amigos hobbits, un mago, un hombre, un elfo y un enano. La misión es casi suicida pero necesaria, pues si Sauron con su ejército de orcos lograra recuperar el Anillo, sería el final de la Tierra Media.",
             "img":"https://pics.filmaffinity.com/the_lord_of_the_rings_the_fellowship_of_the_ring-952398002-large.jpg",
-            "duracion":"3h",
-            "criticas":[
-                {
-                    "id":"001",
-                    "nombre":"Mauricio Nicolas",
-                    "opinion":"Excelente"
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"3h"
+
         },     
         {
             "id":"2",
@@ -92,29 +71,7 @@
             "genero":"Fantasia",
             "sinopsis":"Tras la disolución de la Compañía del Anillo, Frodo y su fiel amigo Sam se dirigen hacia Mordor para destruir el Anillo Único y acabar con el poder de Sauron, pero les sigue un siniestro personaje llamado Gollum. Mientras, y tras la dura batalla contra los orcos donde cayó Boromir, el hombre Aragorn, el elfo Legolas y el enano Gimli intentan rescatar a los medianos Merry y Pipin, secuestrados por los orcos de Mordor. Por su parte, Saurón y el traidor Sarumán continúan con sus planes en Mordor, a la espera de la guerra contra las razas libres de la Tierra Media.",
             "img":"https://pics.filmaffinity.com/the_lord_of_the_rings_the_two_towers-450612576-large.jpg",
-            "duracion":"2h 59m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 59m"
         },
         {
             "id":"3",
@@ -150,29 +107,7 @@
             "genero":"Fantasia",
             "sinopsis":"La batalla por la Tierra Media ha empezado. Las fuerzas de Saruman han sido destruidas y por primera vez parece que hay una pequeña esperanza. Sin embargo, el poder de Sauron crece y su interés se centra en Gondor, el último reducto de los hombres, cuyo heredero es Aragorn. Mientras, Frodo y Sam, guiados por Gollum, siguen su peligrosa misión a través de Mordor para destruir el anillo.",
             "img":"https://pics.filmaffinity.com/the_lord_of_the_rings_the_return_of_the_king-178294596-large.jpg",
-            "duracion":"3h 21m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"3h 21m"
         },
         {
             "id":"4",
@@ -200,29 +135,7 @@
             "genero":"Ciencia Ficcion Cyberpunk",
             "sinopsis":"A principios del siglo XXI, la poderosa Tyrell Corporation creó, gracias a los avances de la ingeniería genética, un robot llamado Nexus 6, un ser virtualmente idéntico al hombre pero superior a él en fuerza y agilidad, al que se dio el nombre de Replicante. Estos robots trabajaban como esclavos en las colonias exteriores de la Tierra. Después de la sangrienta rebelión de un equipo de Nexus-6, los Replicantes fueron desterrados de la Tierra. Brigadas especiales de policía, los Blade Runners, tenían órdenes de matar a todos los que no hubieran acatado la condena. Pero a esto no se le llamaba ejecución, se le llamaba 'retiro'. Tras un grave incidente, el ex Blade Runner Rick Deckard es llamado de nuevo al servicio para encontrar y 'retirar' a unos replicantes rebeldes.",
             "img":"https://pics.filmaffinity.com/blade_runner-351607743-large.jpg",
-            "duracion":"1h 57m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"1h 57m"
         },
         {
             "id":"5",
@@ -250,29 +163,7 @@
             "genero":"Ciencia Ficcion Cyberpunk",
             "sinopsis":"Treinta años después de los eventos del primer film, un nuevo blade runner, K (Ryan Gosling) descubre un secreto profundamente oculto que podría acabar con el caos que impera en la sociedad. El descubrimiento de K le lleva a iniciar la búsqueda de Rick Deckard (Harrison Ford), un blade runner al que se le perdió la pista hace 30 años. ",
             "img":"https://pics.filmaffinity.com/blade_runner_2049-681477614-large.jpg",
-            "duracion":"2h 43m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 43m"
         },
         {
             "id":"6",
@@ -296,29 +187,7 @@
             "genero":"Drama",
             "sinopsis":"Wladyslaw Szpilman, un brillante pianista polaco de origen judío, vive con su familia en el ghetto de Varsovia. Cuando, en 1939, los alemanes invaden Polonia, consigue evitar la deportación gracias a la ayuda de algunos amigos. Pero tendrá que vivir escondido y completamente aislado durante mucho tiempo, y para sobrevivir tendrá que afrontar constantes peligros.",
             "img":"https://pics.filmaffinity.com/the_pianist_le_pianiste-978132965-large.jpg",
-            "duracion":"2h 28m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 28m"
         },
         {
             "id":"7",
@@ -350,29 +219,7 @@
             "genero":"Ciencia Ficcion",
             "sinopsis":"Dom Cobb (DiCaprio) es un experto en el arte de apropiarse, durante el sueño, de los secretos del subconsciente ajeno. La extraña habilidad de Cobb le ha convertido en un hombre muy cotizado en el mundo del espionaje, pero también lo ha condenado a ser un fugitivo y, por consiguiente, a renunciar a llevar una vida normal. Su única oportunidad para cambiar de vida será hacer exactamente lo contrario de lo que ha hecho siempre: la incepción, que consiste en implantar una idea en el subconsciente en lugar de sustraerla. Sin embargo, su plan se complica debido a la intervención de alguien que parece predecir cada uno de sus movimientos, alguien a quien sólo Cobb podrá descubrir.",
             "img":"https://pics.filmaffinity.com/inception-652954101-large.jpg",
-            "duracion":"2h 28m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 28m"
         },
         {
             "id":"8",
@@ -396,29 +243,7 @@
             "genero":"Ciencia Ficcion",
             "sinopsis":"Al ver que la vida en la Tierra está llegando a su fin, un grupo de exploradores dirigidos por el piloto Cooper (McConaughey) y la científica Amelia (Hathaway) emprende una misión que puede ser la más importante de la historia de la humanidad: viajar más allá de nuestra galaxia para descubrir algún planeta en otra que pueda garantizar el futuro de la raza humana.",
             "img":"https://pics.filmaffinity.com/interstellar-366875261-large.jpg",
-            "duracion":"2h 49m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 49m"
         },
         {
             "id":"9",
@@ -446,29 +271,7 @@
             "genero":"Accion Belico",
             "sinopsis":"Adaptación del cómic de Frank Miller (autor del cómic 'Sin City') sobre la famosa batalla de las Termópilas (480 a.C.). El objetivo de Jerjes, emperador de Persia, era la conquista de Grecia, lo que desencadenó las Guerras Médicas. Dada la gravedad de la situación, el rey Leónidas de Esparta (Gerard Butler) y 300 espartanos se enfrentaron a un ejército persa que era inmensamente superior. ",
             "img":"https://pics.filmaffinity.com/300-177205452-large.jpg",
-            "duracion":"1h 57m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"1h 57m"
         },
         {
             "id":"10",
@@ -496,29 +299,7 @@
             "genero":"Fantastico/Superheroes",
             "sinopsis":"Estados Unidos, años 80. La Guerra Fría está en su apogeo, y los superhéroes, que antes habían sido admirados, ahora son perseguidos por la ley. Un día aparece muerto uno de ellos, 'El Comediante', que trabajaba para la CIA. Su amigo Rorschach, el único héroe enmascarado en activo, emprenderá la investigación de su muerte, tras la que se oculta algo muy importante. Esperadísima adaptación del cómic de Alan Moore y Dave Gibbons (1986).",
             "img":"https://pics.filmaffinity.com/watchmen-337424304-large.jpg",
-            "duracion":"2h 43m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 43m"
         },
         {
             "id":"11",
@@ -546,29 +327,7 @@
             "genero":"Thriller Psicologico",
             "sinopsis":"En el verano de 1954, los agentes judiciales Teddy Daniels (DiCaprio) y Chuck Aule (Ruffalo) son destinados a una remota isla del puerto de Boston para investigar la desaparición de una peligrosa asesina (Mortimer) que estaba recluida en el hospital psiquiátrico Ashecliffe, un centro penitenciario para criminales perturbados dirigido por el siniestro doctor John Cawley (Kingsley). Pronto descubrirán que el centro guarda muchos secretos y que la isla esconde algo más peligroso que los pacientes. Thriller psicológico basado en la novela homónima de Dennis Lehane (autor de 'Mystic River' y 'Gone Baby Gone').",
             "img":"https://pics.filmaffinity.com/shutter_island-215721197-large.jpg",
-            "duracion":"2h 18m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 18m"
         },
         {
             "id":"12",
@@ -596,29 +355,7 @@
             "genero":"Ciencia Ficcion",
             "sinopsis":"Thomas Anderson lleva una doble vida: por el día es programador en una importante empresa de software, y por la noche un hacker informático llamado Neo. Su vida no volverá a ser igual cuando unos misteriosos personajes le inviten a descubrir la respuesta a la pregunta que no le deja dormir: ¿qué es Matrix?",
             "img":"https://pics.filmaffinity.com/the_matrix-155050517-large.jpg",
-            "duracion":"2h 11m",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h 11m"
         },
         {
             "id":"13",
@@ -646,29 +383,7 @@
             "genero":"Ciencia Ficcion",
             "sinopsis":"Thomas Anderson lleva una doble vida: por el día es programador en una importante empresa de software, y por la noche un hacker informático llamado Neo. Su vida no volverá a ser igual cuando unos misteriosos personajes le inviten a descubrir la respuesta a la pregunta que no le deja dormir: ¿qué es Matrix?",
             "img":"https://pics.filmaffinity.com/mad_max_fury_road-429261909-large.jpg",
-            "duracion":"2h",
-            "criticas":[
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                },
-                {
-                    "id":"",
-                    "nombre":"",
-                    "opinion":""
-                }
-            ]
+            "duracion":"2h"
         }
     ]
 }
