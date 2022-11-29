@@ -52,8 +52,12 @@ def menu_usuario():
     "2- Editar una pelicula.\n"
     "3- Eliminar una pelicula.\n"
     "4- Volver al menu inicial.\n")
+    opcion= control_de_entrada_usuario()
+    return opcion
 
 def menu_publico():
+    print("------ Menu Publico ------\n"
+    "")
 
 # Usuarios
 def ingreso_usuario():
