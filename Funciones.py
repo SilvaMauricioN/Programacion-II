@@ -36,3 +36,45 @@ def Buscar_Director():
 def modificar_peliculas():
     #en proceso
     return None
+
+# Todos los Menus
+def menu_inicial():
+    print("------ Menu de Inicio ------\n"
+    "1- Ingresar como usuario registrado.\n"
+    "2- Ingresar en modo publico.\n"
+    "3- Salir del programa.")
+    opcion=control_de_entrada_usuario()
+    return opcion
+
+def menu_usuario():
+    print("------ Menu Usuario ------\n"
+    "1- Cargar pelicula.\n"
+    "2- Editar una pelicula.\n"
+    "3- Eliminar una pelicula.\n"
+    "4- Volver al menu inicial.\n")
+
+def menu_publico():
+
+# Usuarios
+def ingreso_usuario():
+    usuario=input("Ingrese usuario: ")
+    while True:
+        contraseña=input ('Ingrese contaseña: ')
+        try:
+            contraseña=int(contraseña)
+            break
+        except ValueError:
+            print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
+
+    return usuario, contraseña
+
+#Control de errores y verificación
+
+def control_de_entrada_usuario():
+    while True:
+        entero=input ('Ingrese una opcion: ')
+        try:
+            entero=int(entero)
+            return entero
+        except ValueError:
+            print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
