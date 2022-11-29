@@ -1,0 +1,31 @@
+{
+    "Usuarios":[
+        {
+            "id":"001",
+            "Nombre":"Mauricio Niciolas",
+            "Apellido":"Silva",
+            "Dni":"35987154",
+            "Email":"silvamauricio_@outlook.com",
+            "User name":"Nico",
+            "Contraseña":"35987"            
+        },
+        {
+            "id":"002",
+            "Nombre":"",
+            "Apellido":"",
+            "Dni":"",
+            "Email":"",
+            "User_name":"",
+            "Contraseña":""
+        },
+        {
+            "id":"003",
+            "Nombre":"",
+            "Apellido":"",
+            "Dni":"",
+            "Email":"",
+            "User name":"",
+            "Contraseña":""           
+        }
+    ]
+}
