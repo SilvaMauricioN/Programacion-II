@@ -1,0 +1,44 @@
+{
+    "directores": [
+        {
+            "id_director": "01",
+            "nombre_director": "Peter Jackson"
+        },
+        {
+            "id_director": "02",
+            "nombre_director": "Ridley Scott"
+        },
+        {
+            "id_director": "03",
+            "nombre_director": "Denis Villeneuve"
+        },
+        {
+            "id_director": "04",
+            "nombre_director": "Roman Polanski"
+        },
+        {
+            "id_director": "05",
+            "nombre_director": "Christopher Nolan"
+        },
+        {
+            "id_director": "06",
+            "nombre_director": "Zack Snyder"
+        },
+        {
+            "id_director": "07",
+            "nombre_director": "Martin Scorsese"
+        },
+        {
+            "id_director": "08",
+            "nombre_director": "Lilly/Lana Wachowski"
+        },
+        {
+            "id_director": "09",
+            "nombre_director": "George Miller"
+        },
+        {
+            "id_director": "10",
+            "nombre_director": "Ryan Coogler"
+        }     
+    ]
+}

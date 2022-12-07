@@ -1,8 +1,8 @@
 import json 
 
 #Creo diccionario apartir de un json
-with open ('Peliculas.json', encoding='utf-8') as archivo:
-    Peliculas = json.load(archivo)
+# with open ('Peliculas.json', encoding='utf-8') as archivo:
+#     Peliculas = json.load(archivo)
 
 #Modo Publico
 
