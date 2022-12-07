@@ -110,4 +110,5 @@ def Eliminar_Pelicula():
                 
     if (encontrado==False):
         print('La pelicula no existe')
+        print('hola nico')
     
