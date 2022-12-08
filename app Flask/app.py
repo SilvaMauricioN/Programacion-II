@@ -49,3 +49,23 @@ def Peliculas_Director(Director):
         return Response("{Director, No Encontrado}", str(HTTPStatus.BAD_REQUEST))    
     else:
         return jsonify(Pelicula)
+
+#Peliculas con imagen de portada
+@app.route("/Portada/Peliculas")
+def genero():
+
+    ImgPortada=[
+    ]
+
+    for i in Peliculas['Movies']:
+        if len(i['img'])  >= 1:
+
+            ImgPortada.append({
+                "titulo":i['titulo'],
+                "img":i['img']
+            })           
+    
+    if len(ImgPortada[0]['titulo'])==0:
+        return Response("{No Encontrado}", str(HTTPStatus.BAD_REQUEST))     
+    else:
+        return jsonify(ImgPortada)
