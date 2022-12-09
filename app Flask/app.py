@@ -35,6 +35,12 @@ def Existen_Comentarios(Pelicula):
     return Existe
 
 #Funciones Para Abrir los archivos json
+
+def Abrir_Usiarios():
+    with open("Usuarios.json") as archivo:
+        Usuarios=json.load(archivo)
+    return Usuarios
+
 def Abrir_Directores():
 
     with open("Directores.json") as archivo:
@@ -134,6 +140,13 @@ def Borrar_Pelicula(Pelicula):
             json.dump(Peliculas,archivo, indent=4, ensure_ascii=False, sort_keys=False)
 
 #RUTAS/ENDPOINTS        
+
+#Lista de Usuarios
+@app.route("/Usuarios")
+def Devolver_Usiarios():
+    Usuarios=Abrir_Usiarios()
+    return jsonify(Usuarios)
+
 #Lista de Directores
 @app.route("/Directores")
 def Devolver_Directores():
@@ -153,7 +166,7 @@ def Peliculas_Director(Director):
         "director":"",
         "peliculas":[]
     }
-    Peliculas = Agregar_Peliculas()
+    Peliculas = Agregar_Pelicula()
     for i in Peliculas['Movies']:
         if i['director'].upper() == Director.upper():    
             Pelicula['director']= Director
@@ -170,7 +183,7 @@ def genero():
 
     ImgPortada=[
     ]
-    Peliculas = Agregar_Peliculas()
+    Peliculas = Agregar_Pelicula()
     for i in Peliculas['Movies']:
         if len(i['img'])  >= 1:
 
@@ -235,8 +248,8 @@ def Modificar_Pelicula(Pelicula):
 
             if Pelicula in i.values():
                                 
-                if "id" in pelicula_A_Modificar and "titulo" in pelicula_A_Modificar and "año" in pelicula_A_Modificar and "director" in pelicula_A_Modificar  and "reparto" in pelicula_A_Modificar \
-                    and "genero" in pelicula_A_Modificar and "sinopsis" in pelicula_A_Modificar and "img" in pelicula_A_Modificar and "duracion" in pelicula_A_Modificar:
+                if "id" in Pelicula_A_Modificar and "titulo" in Pelicula_A_Modificar and "año" in Pelicula_A_Modificar and "director" in Pelicula_A_Modificar  and "reparto" in Pelicula_A_Modificar \
+                    and "genero" in Pelicula_A_Modificar and "sinopsis" in Pelicula_A_Modificar and "img" in Pelicula_A_Modificar and "duracion" in Pelicula_A_Modificar:
                         
                     i['titulo'] = request.json['titulo']
                     i['año'] = request.json['año']
@@ -254,5 +267,3 @@ def Modificar_Pelicula(Pelicula):
 
     else:
         return jsonify("La Pelicula No Existe")
-
-
