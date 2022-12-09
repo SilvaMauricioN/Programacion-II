@@ -1,0 +1,28 @@
+{
+    "Generos": [
+        {
+            "genero_pelicula": "Fantasia"
+        },
+        {
+            "genero_pelicula": "Ciencia Ficcion Cyberpunk"
+        },
+        {
+            "genero_pelicula": "Drama"
+        },
+        {
+            "genero_pelicula": "Ciencia Ficcion"
+        },
+        {
+            "genero_pelicula": "Accion Belico"
+        },
+        {
+            "genero_pelicula": "Fantastico/Superheroes"
+        },
+        {
+            "genero_pelicula": "Thriller Psicologico"
+        },
+        {
+            "genero_pelicula": "Fantastico"
+        }    
+    ]
+}

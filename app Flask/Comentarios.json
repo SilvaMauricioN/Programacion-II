@@ -1,0 +1,133 @@
+{
+    "criticas":[
+        {
+            "Nombre_pelicula":"El Señor de los Añillos: La Comunidad del Añillo",
+            "id_pelicula":"1",            
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Excelente"
+                },
+                {
+                    "id_usuario":"002",
+                    "nombre":"Julian",
+                    "opinion":"Malisima"
+                }
+            ]
+        },       
+        {
+            "Nombre_pelicula":"El Señor de los Añillos: Las Dos Torres",
+            "id_pelicula":"2",            
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Excelente"
+                },
+                {
+                    "id_usuario":"002",
+                    "nombre":"Julian",
+                    "opinion":"Malisima"
+                }
+            ]
+        },
+        {
+            "Nombre_pelicula":"El Señor de los Añillos: El Retorno del Rey",
+            "id_pelicula":"3",            
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Excelente"
+                },
+                {
+                    "id_usuario":"002",
+                    "nombre":"Julian",
+                    "opinion":"Malisima"
+                }
+            ]
+        },
+        {
+            "Nombre_pelicula":"Blade Runner",
+            "id_pelicula":"4",            
+            "comentarios":[               
+            ]
+        },
+        {
+            "Nombre_pelicula":"Blade Runner 2049",
+            "id_pelicula":"5",
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Pelicula cyber punk futurista incleible"
+                }
+            ]
+        },
+        {
+            "Nombre_pelicula":"El Pianista",
+            "id_pelicula":"6",
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Impresionante"
+                }                
+            ]
+        },
+        {
+            "Nombre_pelicula":"Origen",
+            "id_pelicula":"7",            
+            "comentarios":[                
+            ]
+        },
+        {
+            "Nombre_pelicula":"Interstellar",
+            "id_pelicula":"8",            
+            "comentarios":[               
+            ]
+        },
+        {
+            "Nombre_pelicula":"300",
+            "id_pelicula":"9",            
+            "comentarios":[
+            ]              
+        },
+        {
+            "Nombre_pelicula":"Watchmen",
+            "id_pelicula":"10",            
+            "comentarios":[                
+            ]
+        },
+        {
+            "Nombre_pelicula":"La Isla Siniestra",
+            "id_pelicula":"11",
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Pelicula Psicologica impresionante"
+                }
+            ]
+        },
+        {
+            "Nombre_pelicula":"Matrix",
+            "id_pelicula":"12",            
+            "comentarios":[           
+            ]
+        },              
+        {
+            "Nombre_pelicula":"Mad Max",
+            "id_pelicula":"13",            
+            "comentarios":[                
+            ]
+        },
+        {
+            "Nombre_pelicula":"Black Panther: Wakanda Forever",
+            "id_pelicula":"2",            
+            "comentarios":[                                
+            ]
+        }         
+    ]
+}
