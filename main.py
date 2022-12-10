@@ -8,7 +8,9 @@ while opcion!=3:
     if opcion== 1:
         validacion=fc.ingreso_usuario()
         if validacion==True:
-            print("ok")
+            opcion=fc.menu_usuario()
+            if opcion==1:
+                print("hola")
         else:
             print("Algun dato esta mal")
 # falta comprar si el usuario y la contraseña son correctos
