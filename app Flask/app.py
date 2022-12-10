@@ -153,7 +153,7 @@ def Peliculas_Director(Director):
         "director":"",
         "peliculas":[]
     }
-    Peliculas = Agregar_Peliculas()
+    Peliculas = Agregar_Pelicula()
     for i in Peliculas['Movies']:
         if i['director'].upper() == Director.upper():    
             Pelicula['director']= Director
