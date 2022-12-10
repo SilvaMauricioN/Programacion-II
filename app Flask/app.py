@@ -170,7 +170,7 @@ def genero():
 
     ImgPortada=[
     ]
-    Peliculas = Agregar_Peliculas()
+    Peliculas = Agregar_Pelicula()
     for i in Peliculas['Movies']:
         if len(i['img'])  >= 1:
 
@@ -226,7 +226,7 @@ def Eliminar_Pelicula(Pelicula):
 def Modificar_Pelicula(Pelicula):
 
     Peliculas = Abrir_Peliculas()
-    Pelicula_A_Modificar = request.get_json()
+    pelicula_A_Modificar = request.get_json()
     Verificar=Eliminar_Pelicula(Pelicula)
 
     if Verificar:
