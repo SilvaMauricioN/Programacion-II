@@ -36,7 +36,7 @@ def Existen_Comentarios(Pelicula):
 
 #Funciones Para Abrir los archivos json
 
-def Abrir_Usiarios():
+def Abrir_Usuarios():
     with open("Usuarios.json") as archivo:
         Usuarios=json.load(archivo)
     return Usuarios
@@ -144,7 +144,7 @@ def Borrar_Pelicula(Pelicula):
 #Lista de Usuarios
 @app.route("/Usuarios")
 def Devolver_Usiarios():
-    Usuarios=Abrir_Usiarios()
+    Usuarios=Abrir_Usuarios()
     return jsonify(Usuarios)
 
 #Lista de Directores

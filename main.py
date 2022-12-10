@@ -1,16 +1,16 @@
 import Funciones as fc
 import requests
 
-
-fc.Buscar_Director
-fc.Buscar_Director
 opcion=0
 while opcion!=3:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
-        
         usuario,contraseña=fc.ingreso_usuario()
+        if usuario==False and contraseña==False:
+            print("Todo mal")
+        else:
+            print(usuario,contraseña)
 # falta comprar si el usuario y la contraseña son correctos
 #ingreso en modo publico
     elif opcion== 2:
