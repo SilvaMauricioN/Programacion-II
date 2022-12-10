@@ -1,5 +1,5 @@
 import json 
-
+import requests
 #Creo diccionario apartir de un json
 # with open ('Peliculas.json', encoding='utf-8') as archivo:
 #     Peliculas = json.load(archivo)
@@ -12,10 +12,10 @@ def Ultimas_Peliculas():
     print("Ultimas Peliculas")
     print()
 #calulo en que posicion empezar
-    indice=len(Peliculas['Movies'])-10
+    # indice=len(Peliculas['Movies'])-10
 
-    for i in Peliculas['Movies'][indice:]:
-        print(i['titulo'])
+    # for i in Peliculas['Movies'][indice:]:
+    #     print(i['titulo'])
 
 #funcion para buscar peliculas por nombre de director
 def Buscar_Director():
@@ -60,19 +60,20 @@ def menu_usuario():
 # Usuarios
 def ingreso_usuario():
     usuario=input("Ingrese usuario: ")
-    while True:
-        contraseña=input ('Ingrese contaseña: ')
-        try:
-            contraseña=int(contraseña)
-            break
-        except ValueError:
-            print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
+    contraseña=input ('Ingrese contaseña: ')
+    validacion=comprovar_usuario(usuario,contraseña)
+    if validacion==True:
+        return True
+    else:
+        return False
 
-    return usuario, contraseña
-
-def comprovar_usuario():
-    print("en espera")
-
+def comprovar_usuario(usuario,contraseña):
+    respuesta=requests.get("http://127.0.0.1:5000/Usuarios")
+    diccionario=respuesta.json()
+    for i in diccionario["Usuarios"]:
+        if i["User name"] == usuario and i["Contraseña"] == contraseña:
+            return True
+    return False
 #Control de errores y verificación
 
 def control_de_entrada_usuario():
@@ -110,5 +111,5 @@ def Eliminar_Pelicula():
                 
     if (encontrado==False):
         print('La pelicula no existe')
-        print('hola nico')
+
     

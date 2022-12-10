@@ -37,19 +37,19 @@ def Existen_Comentarios(Pelicula):
 #Funciones Para Abrir los archivos json
 
 def Abrir_Usuarios():
-    with open("Usuarios.json") as archivo:
+    with open("Usuarios.json", encoding='utf-8') as archivo:
         Usuarios=json.load(archivo)
     return Usuarios
 
 def Abrir_Directores():
 
-    with open("Directores.json") as archivo:
+    with open("Directores.json", encoding='utf-8') as archivo:
         Directores=json.load(archivo)
     return Directores
 
 def Abrir_Generos():
 
-    with open("Generos.json") as archivo:
+    with open("Generos.json", encoding='utf-8') as archivo:
         Generos=json.load(archivo)
     
     return Generos
@@ -248,8 +248,10 @@ def Modificar_Pelicula(Pelicula):
 
             if Pelicula in i.values():
                                 
-                if "id" in Pelicula_A_Modificar and "titulo" in Pelicula_A_Modificar and "año" in Pelicula_A_Modificar and "director" in Pelicula_A_Modificar  and "reparto" in Pelicula_A_Modificar \
-                    and "genero" in Pelicula_A_Modificar and "sinopsis" in Pelicula_A_Modificar and "img" in Pelicula_A_Modificar and "duracion" in Pelicula_A_Modificar:
+                if "id" in Pelicula_A_Modificar and "titulo" in Pelicula_A_Modificar and "año" in Pelicula_A_Modificar and \
+                "director" in Pelicula_A_Modificar  and "reparto" in Pelicula_A_Modificar \
+                    and "genero" in Pelicula_A_Modificar and "sinopsis" in Pelicula_A_Modificar and "img" in Pelicula_A_Modificar and \
+                    "duracion" in Pelicula_A_Modificar:
                         
                     i['titulo'] = request.json['titulo']
                     i['año'] = request.json['año']

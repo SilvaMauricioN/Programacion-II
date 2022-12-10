@@ -6,11 +6,11 @@ while opcion!=3:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
-        usuario,contraseña=fc.ingreso_usuario()
-        if usuario==False and contraseña==False:
-            print("Todo mal")
+        validacion=fc.ingreso_usuario()
+        if validacion==True:
+            print("ok")
         else:
-            print(usuario,contraseña)
+            print("Algun dato esta mal")
 # falta comprar si el usuario y la contraseña son correctos
 #ingreso en modo publico
     elif opcion== 2:
