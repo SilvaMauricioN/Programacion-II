@@ -18,7 +18,6 @@ def Existe_Pelicula(Pelicula):
 
 
 #Modo Publico
-
 #funcion para ver las ultimas 10 pelicuas subidas
 def Ultimas_Peliculas():
 
@@ -50,8 +49,31 @@ def Buscar_Director():
         for i in Peliculas['peliculas']:
             print(i)
     else:
-        print(Peliculas)    
+        print(Peliculas)
 
+def Buscar_Pelicula_img():
+    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
+    Peliculas = Datos.json()
+    for i in Peliculas["Movies"]:
+        if i["img"]!="":
+            print(i["titulo"],i["año"],i["director"],i["genero"],i["duracion"],"\n",
+                  i["reparto"["actor"]],"como",i["reparto"["personaje"]],"\n")
+
+def Lista_Directores():
+    print("Estos son los directores presentes en la plataforma.\n")
+    datos=requests.get("http://127.0.0.1:5000/Directores")
+    directores=datos.json()
+    for i in directores["directores"]:
+        print(i["nombre_director"])
+    
+#Funcion generos
+
+def Generos():
+    print("Estos son los generos presentes en la plataforma.\n")
+    datos=requests.get("http://127.0.0.1:5000/Generos")
+    generos=datos.json()
+    for i in generos["Generos"]:
+        print(i["genero_pelicula"])
 #Modificar pelicula existente
 def modificar_peliculas():
     
@@ -107,13 +129,14 @@ def menu_inicial():
     return opcion
 
 def menu_usuario():
+    print()
     print("------ Menu Usuario ------\n"
     "1- Lista de Directores.\n"
-    "2- Catalogo de Generos.\n"
-    "3- Peliculas de cada director. \n"
+    "2- Lista de Generos.\n"
+    "3- Peliculas del director. \n"
     "4- Pelicualas con Portada.\n"
     "5- Cargar Peliculas \n"
-    "6- Editar una pelicula.\n"
+    "6- Modificar pelicula.\n"
     "7- Eliminar una pelicula.\n"
     "8- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
@@ -157,4 +180,5 @@ def Eliminar_Pelicula():
     mensaje=Datos.json()
     print(mensaje)
     
-modificar_peliculas()
+def modificar_peliculas():
+    print("algo")
