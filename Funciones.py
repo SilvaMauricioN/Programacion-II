@@ -1,4 +1,21 @@
 import requests
+#funciones de Control
+
+def Existe_Pelicula(Pelicula):
+    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
+    Peliculas = Datos.json()
+
+    movie=[]
+    for i in Peliculas["Movies"]:
+        if i['titulo'].upper() == Pelicula.upper():      
+            
+            movie.append(i['titulo'])
+    
+    if len(movie)==1:
+        return(True)
+    else:
+        return(False)
+
 
 #Modo Publico
 
@@ -38,42 +55,47 @@ def Buscar_Director():
 #Modificar pelicula existente
 def modificar_peliculas():
     
-    pelicula = input("Ingrese el Nombre de la Pelicula: ")
+    pelicula = input("Ingrese el Nombre de la Pelicula a Modificar: ")
 
+    Verificar = Existe_Pelicula(pelicula)
 
-    año = input("Ingrese el año de la pelicula: ")
-    director = input("Ingrese nombre del Director: ")
-    genero = input("Ingrese genero de la pelicula: ")
-    sinopsis = input ("Ingrese la sinopsis: ")
-    img = input("Url de la imagen de la pelicula: ")
-    duracion = input("Ingrese duracion de la pelicula: ")
-    reparto = input("Ingrese reparto de la pelicula: ")
+    if Verificar:
+        pelicula=input("Ingrese nuevo nombre: ")
+        año = input("Ingrese el año de la pelicula: ")
+        director = input("Ingrese nombre del Director: ")
+        genero = input("Ingrese genero de la pelicula: ")
+        sinopsis = input ("Ingrese la sinopsis: ")
+        img = input("Url de la imagen de la pelicula: ")
+        duracion = input("Ingrese duracion de la pelicula: ")
+        reparto = input("Ingrese reparto de la pelicula: ")
 
-    pelicula_a_modificar ={
-        "titulo":"",
-        'año' :"",
-        'director':"",
-        'genero':"",
-        'sinopsis':"",
-        'img':"",
-        'duracion':"",
-        'reparto':""
-            }
-    pelicula_a_modificar['titulo']=pelicula
-    pelicula_a_modificar["año"]=año
-    pelicula_a_modificar["director"]=director
-    pelicula_a_modificar["genero"]=genero
-    pelicula_a_modificar["sinopsis"]=sinopsis
-    pelicula_a_modificar["img"]=img
-    pelicula_a_modificar["duracion"]=duracion
-    pelicula_a_modificar["reparto"]=reparto
-    
-    Datos = requests.put("http://127.0.0.1:5000/Modificar/"+pelicula, json=pelicula_a_modificar)
-    print(Datos.url)
-    print(pelicula_a_modificar)
-    mensaje=Datos.json()
-    print(mensaje)
-    #print(Datos.text)
+        pelicula_a_modificar ={
+            "id":"",
+            "titulo":"",
+            'año' :"",
+            'director':"",
+            'genero':"",
+            'sinopsis':"",
+            'img':"",
+            'duracion':"",
+            'reparto':""
+                }
+        pelicula_a_modificar['titulo']=pelicula
+        pelicula_a_modificar['año']=año
+        pelicula_a_modificar['director']=director
+        pelicula_a_modificar['genero']=genero
+        pelicula_a_modificar['sinopsis']=sinopsis
+        pelicula_a_modificar['img']=img
+        pelicula_a_modificar['duracion']=duracion
+        pelicula_a_modificar['reparto']=reparto
+        
+        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+pelicula, json=pelicula_a_modificar)
+        print(Datos.url)
+        print(pelicula_a_modificar)
+        mensaje=Datos.json()
+        print(mensaje)
+    else:
+        print("La Pelicula No Existe")
 
 # Todos los Menus
 def menu_inicial():
@@ -131,4 +153,4 @@ def Eliminar_Pelicula():
     mensaje=Datos.json()
     print(mensaje)
     
-
+modificar_peliculas()

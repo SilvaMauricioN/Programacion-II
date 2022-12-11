@@ -240,7 +240,7 @@ def Modificar_Pelicula(Pelicula):
 
     Peliculas = Abrir_Peliculas()
     Pelicula_A_Modificar = request.get_json()
-    Verificar=Eliminar_Pelicula(Pelicula)
+    Verificar=Existe_Pelicula(Pelicula)
 
     if Verificar:
 
@@ -261,6 +261,12 @@ def Modificar_Pelicula(Pelicula):
                     i['img'] = request.json['img']
                     i['duracion'] = request.json['duracion']
                     i['reparto'] = request.json['reparto']
+
+                    with open ("Peliculas.json", "w+", encoding='utf-8') as archivo:
+                        data=Peliculas
+                        archivo.seek(0)
+                        json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)        
+                    
                     
                     return jsonify('Pelicula Modificada')
 
