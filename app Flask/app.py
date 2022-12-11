@@ -159,6 +159,12 @@ def Devolver_Generos():
     Generos=Abrir_Generos()
     return jsonify(Generos)
 
+#Todas las Peliculas
+@app.route("/Peliculas")
+def Devolver_Peliculas():
+    Peliculas=Abrir_Peliculas()
+    return jsonify(Peliculas)
+    
 #Peliculas de un mismo director
 @app.route('/Peliculas/<string:Director>')
 def Peliculas_Director(Director):

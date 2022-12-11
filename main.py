@@ -7,16 +7,25 @@ while opcion!=3:
     #ingreso con usuario
     if opcion== 1:
         validacion=fc.ingreso_usuario()
-        if validacion==True:
-            opcion=fc.menu_usuario()
-            if opcion==1:
-                print("hola")
-        else:
-            print("Algun dato esta mal")
-# falta comprar si el usuario y la contraseña son correctos
+        while True:
+            if validacion==True:
+                opcion=fc.menu_usuario()
+                if opcion==1:
+                    print("hola")
+                elif opcion==2:
+                    print("")
+                elif opcion==3:
+                    fc.modificar_peliculas()
+                elif opcion==4:
+                    fc.Eliminar_Pelicula()
+                elif opcion==5:
+                    break
+            else:
+                print("Algun dato esta mal")
 #ingreso en modo publico
     elif opcion== 2:
-        print("opcion 2")
+        
+        fc.Ultimas_Peliculas()
     elif opcion == 3:
         print("Fin del programa.")
     else:

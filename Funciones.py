@@ -71,9 +71,10 @@ def modificar_peliculas():
     Datos = requests.put("http://127.0.0.1:5000/Modificar/"+pelicula, json=pelicula_a_modificar)
     print(Datos.url)
     print(pelicula_a_modificar)
-    mensaje=Datos.json()
-    print(mensaje)
+    # mensaje=Datos.json()
+    # print(mensaje)
     #print(Datos.text)
+    
 
 # Todos los Menus
 def menu_inicial():
@@ -86,10 +87,14 @@ def menu_inicial():
 
 def menu_usuario():
     print("------ Menu Usuario ------\n"
-    "1- Cargar pelicula.\n"
-    "2- Editar una pelicula.\n"
-    "3- Eliminar una pelicula.\n"
-    "4- Volver al menu inicial.\n")
+    "1- Lista de Directores.\n"
+    "2- Catalogo de Generos.\n"
+    "3- Peliculas de cada director. \n"
+    "4- Pelicualas con Portada.\n"
+    "5- Cargar Peliculas \n"
+    "6- Editar una pelicula.\n"
+    "7- Eliminar una pelicula.\n"
+    "8- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
     return opcion
 
@@ -130,5 +135,3 @@ def Eliminar_Pelicula():
     Datos = requests.delete("http://127.0.0.1:5000/Eliminar/"+titulo)
     mensaje=Datos.json()
     print(mensaje)
-    
-
