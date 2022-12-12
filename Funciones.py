@@ -52,7 +52,7 @@ def Buscar_Director():
         print(Peliculas)
 
 def Buscar_Pelicula_Portada():
-    Datos = requests.get("http://127.0.0.1:5000/Portada/Peliculas")
+    Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
     Portada = Datos.json()
     for i in Portada:
         print(i["titulo"])
@@ -146,13 +146,13 @@ def menu_usuario():
 def ingreso_usuario():
     usuario=input("Ingrese usuario: ")
     contraseña=input ('Ingrese contaseña: ')
-    validacion=comprovar_usuario(usuario,contraseña)
+    validacion=comprobar_usuario(usuario,contraseña)
     if validacion==True:
         return True
     else:
         return False
 
-def comprovar_usuario(usuario,contraseña):
+def comprobar_usuario(usuario,contraseña):
     respuesta=requests.get("http://127.0.0.1:5000/Usuarios")
     diccionario=respuesta.json()
     for i in diccionario["Usuarios"]:
@@ -181,17 +181,3 @@ def Eliminar_Pelicula():
     
 #modificar_peliculas()
 
-def Portada():
-
-    #director =input("Ingrese el Nombre del Director: ")
-    Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
-    print (Datos.url)
-    
-    Peliculas= Datos.json()
-
-    for i in Peliculas:
-        print(i['titulo'])
-        print(i['img'])
-
-Portada()
-#Buscar_Director()

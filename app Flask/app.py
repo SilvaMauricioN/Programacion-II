@@ -143,7 +143,7 @@ def Borrar_Pelicula(Pelicula):
 
 #Lista de Usuarios
 @app.route("/Usuarios")
-def Devolver_Usiarios():
+def Devolver_Usuarios():
     Usuarios=Abrir_Usuarios()
     return jsonify(Usuarios)
 

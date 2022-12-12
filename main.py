@@ -30,6 +30,7 @@ while opcion!=3:
                     break
             else:
                 print("Algun dato esta mal")
+                break
 #ingreso en modo publico
     elif opcion== 2:
         
