@@ -16,7 +16,6 @@ def Existe_Pelicula(Pelicula):
     else:
         return(False)
 
-
 #Modo Publico
 #funcion para ver las ultimas 10 pelicuas subidas
 def Ultimas_Peliculas():
@@ -74,49 +73,6 @@ def Generos():
     for i in generos["Generos"]:
         print(i["genero_pelicula"])
 #Modificar pelicula existente
-def modificar_peliculas():
-    
-    peliculas = input("Ingrese el Nombre de la Pelicula a Modificar: ")
-
-    Verificar = Existe_Pelicula(peliculas)
-
-    if Verificar:
-        pelicula=input("Ingrese nuevo nombre: ")
-        año = input("Ingrese el año de la pelicula: ")
-        director = input("Ingrese nombre del Director: ")
-        genero = input("Ingrese genero de la pelicula: ")
-        sinopsis = input ("Ingrese la sinopsis: ")
-        img = input("Url de la imagen de la pelicula: ")
-        duracion = input("Ingrese duracion de la pelicula: ")
-        reparto = input("Ingrese reparto de la pelicula: ")
-
-        pelicula_a_modificar ={
-            "id":"",
-            "titulo":"",
-            'año' :"",
-            'director':"",
-            'genero':"",
-            'sinopsis':"",
-            'img':"",
-            'duracion':"",
-            'reparto':""
-                }
-        pelicula_a_modificar['titulo']=pelicula
-        pelicula_a_modificar['año']=año
-        pelicula_a_modificar['director']=director
-        pelicula_a_modificar['genero']=genero
-        pelicula_a_modificar['sinopsis']=sinopsis
-        pelicula_a_modificar['img']=img
-        pelicula_a_modificar['duracion']=duracion
-        pelicula_a_modificar['reparto']=reparto
-        
-        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+peliculas, json=pelicula_a_modificar)
-        print(Datos.url)
-        print(pelicula_a_modificar)
-        mensaje=Datos.json()
-        print(mensaje)
-    else:
-        print("La Pelicula No Existe")
 
 # Todos los Menus
 def menu_inicial():
@@ -140,7 +96,6 @@ def menu_usuario():
     "8- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
     return opcion
-
 
 # Usuarios
 def ingreso_usuario():
@@ -180,4 +135,134 @@ def Eliminar_Pelicula():
     print(mensaje)
     
 #modificar_peliculas()
+
+def Verificar_ID(pelicula):
+
+    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
+    Peliculas = Datos.json()
+
+    for i in Peliculas['Movies']:
+        if i['titulo'].upper() == pelicula.upper():
+            ID = i['id']
+
+    return ID
+
+def Modificar_Pelicula():
+
+    pelicula = input("Ingrese el Nombre de la Pelicula a Modificar: ")
+    Verificar = Existe_Pelicula(pelicula)
+
+    if Verificar:
+        Datos = requests.get("http://127.0.0.1:5000/Peliculas")
+        Peliculas = Datos.json()
+        opcion=0
+        ID=Verificar_ID(pelicula)
+        while opcion != 9:
+            print()
+            print ('1) Modificar Titulo pelicula ' )
+            print ('2) Modificar Año')
+            print ('3) Modificar Director')
+            print ('4) Modificar genero')
+            print ('5) Modificar Sinopsis')
+            print ('6) Modificar Portada de la pelicula')
+            print ('7) Modificar Duracion de pelicula')
+            print ('8) Modificar Reparto')
+            print ('9) Salir')
+            opcion = input ('Ingrese una opcion:  ')
+                
+            if opcion == '1':
+                nuevo_titulo=input("Nombre de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['titulo'] = nuevo_titulo
+                 
+            elif opcion == '2':
+
+                nuevo_año=input("Año de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['año'] = nuevo_año
+
+            elif opcion =='3':
+
+                nuevo_director=input("director de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['director'] = nuevo_director
+            
+            
+            elif opcion =='4':
+
+                nuevo_genero=input("genero de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['genero'] = nuevo_genero
+
+            
+            elif opcion =='5':
+
+                nuevo_sinopsis=input("Sinopsis de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['sinopsis'] = nuevo_sinopsis
+
+            
+            elif opcion =='6':
+
+                nuevo_img=input("Url de imagen de pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['img'] = nuevo_img
+            
+            
+            elif opcion =='7':
+
+                nuevo_duracion=input("Tiempo de duracion de la pelicula:")
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['duracion'] = nuevo_duracion
+
+            
+            elif opcion =='8':
+
+
+                reparto= []
+                op=0
+
+                while op != 2:
+
+                    print("1) Nuevo actor y personaje")
+                    print("2) Salir")
+                    op=input("Ingrese opcion: ")
+
+                    if op == '1':
+
+                        actor=input("Nombre del Actor: ")
+                        personaje=input("Nombre del Personaje: ")
+
+                        reparto.append({
+
+                            "actor":actor,
+                            "personaje":personaje
+                            })
+                    
+                    elif op =='2':
+                        break
+              
+                for i in Peliculas['Movies']:
+                    if i['id'] == ID:
+                        i['reparto'] = reparto
+
+            elif opcion == '9':
+                break
+        
+
+        Datos = requests.put("http://127.0.0.1:5000/Modificar/Peliculas", json=Peliculas)
+      
+        mensaje=Datos.json()
+        print(mensaje)
+    else:
+        print("La pelicula no existe")
+
+
 
