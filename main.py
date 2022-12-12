@@ -1,22 +1,39 @@
 import Funciones as fc
 import requests
+import os
 
 opcion=0
+os.system("cls")
 while opcion!=3:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
         validacion=fc.ingreso_usuario()
-        if validacion==True:
-            opcion=fc.menu_usuario()
-            if opcion==1:
-                print("hola")
-        else:
-            print("Algun dato esta mal")
-# falta comprar si el usuario y la contraseña son correctos
+        while True:
+            if validacion==True:
+                opcion=fc.menu_usuario()
+                if opcion==1:
+                    fc.Lista_Directores()
+                elif opcion==2:
+                    fc.Generos()
+                elif opcion==3:
+                    fc.Buscar_Director()
+                elif opcion==4:
+                    fc.Buscar_Pelicula_Portada()
+                elif opcion==5:
+                    break
+                elif opcion==6:
+                    fc.modificar_peliculas()
+                elif opcion==7:
+                    fc.Eliminar_Pelicula()
+                elif opcion==8:
+                    break
+            else:
+                print("Algun dato esta mal")
 #ingreso en modo publico
     elif opcion== 2:
-        print("opcion 2")
+        
+        fc.Ultimas_Peliculas()
     elif opcion == 3:
         print("Fin del programa.")
     else:

@@ -18,7 +18,6 @@ def Existe_Pelicula(Pelicula):
 
 
 #Modo Publico
-
 #funcion para ver las ultimas 10 pelicuas subidas
 def Ultimas_Peliculas():
 
@@ -50,14 +49,36 @@ def Buscar_Director():
         for i in Peliculas['peliculas']:
             print(i)
     else:
-        print(Peliculas)    
+        print(Peliculas)
 
+def Buscar_Pelicula_Portada():
+    Datos = requests.get("http://127.0.0.1:5000/Portada/Peliculas")
+    Portada = Datos.json()
+    for i in Portada:
+        print(i["titulo"])
+        print(i["img"])
+
+def Lista_Directores():
+    print("Estos son los directores presentes en la plataforma.\n")
+    datos=requests.get("http://127.0.0.1:5000/Directores")
+    directores=datos.json()
+    for i in directores["directores"]:
+        print(i["nombre_director"])
+    
+#Funcion generos
+
+def Generos():
+    print("Estos son los generos presentes en la plataforma.\n")
+    datos=requests.get("http://127.0.0.1:5000/Generos")
+    generos=datos.json()
+    for i in generos["Generos"]:
+        print(i["genero_pelicula"])
 #Modificar pelicula existente
 def modificar_peliculas():
     
-    pelicula = input("Ingrese el Nombre de la Pelicula a Modificar: ")
+    peliculas = input("Ingrese el Nombre de la Pelicula a Modificar: ")
 
-    Verificar = Existe_Pelicula(pelicula)
+    Verificar = Existe_Pelicula(peliculas)
 
     if Verificar:
         pelicula=input("Ingrese nuevo nombre: ")
@@ -89,7 +110,7 @@ def modificar_peliculas():
         pelicula_a_modificar['duracion']=duracion
         pelicula_a_modificar['reparto']=reparto
         
-        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+pelicula, json=pelicula_a_modificar)
+        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+peliculas, json=pelicula_a_modificar)
         print(Datos.url)
         print(pelicula_a_modificar)
         mensaje=Datos.json()
@@ -107,11 +128,16 @@ def menu_inicial():
     return opcion
 
 def menu_usuario():
+    print()
     print("------ Menu Usuario ------\n"
-    "1- Cargar pelicula.\n"
-    "2- Editar una pelicula.\n"
-    "3- Eliminar una pelicula.\n"
-    "4- Volver al menu inicial.\n")
+    "1- Lista de Directores.\n"
+    "2- Lista de Generos.\n"
+    "3- Peliculas del director. \n"
+    "4- Pelicualas con Portada.\n"
+    "5- Cargar Peliculas \n"
+    "6- Modificar pelicula.\n"
+    "7- Eliminar una pelicula.\n"
+    "8- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
     return opcion
 
