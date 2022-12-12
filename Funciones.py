@@ -153,4 +153,19 @@ def Eliminar_Pelicula():
     mensaje=Datos.json()
     print(mensaje)
     
-modificar_peliculas()
+#modificar_peliculas()
+
+def Portada():
+
+    #director =input("Ingrese el Nombre del Director: ")
+    Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
+    print (Datos.url)
+    
+    Peliculas= Datos.json()
+
+    for i in Peliculas:
+        print(i['titulo'])
+        print(i['img'])
+
+Portada()
+#Buscar_Director()
