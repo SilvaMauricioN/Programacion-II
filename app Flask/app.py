@@ -199,7 +199,7 @@ def genero():
             })           
     
     if len(ImgPortada[0]['titulo'])==0:
-        return Response("{No Encontrado}", str(HTTPStatus.BAD_REQUEST))     
+        return jsonify("No Encontrado")     
     else:
         return jsonify(ImgPortada)
 
@@ -254,7 +254,7 @@ def Modificar_Pelicula(Pelicula):
 
             if Pelicula in i.values():
                                 
-                if "id" in Pelicula_A_Modificar and "titulo" in Pelicula_A_Modificar and "año" in Pelicula_A_Modificar and \
+                if "titulo" in Pelicula_A_Modificar and "año" in Pelicula_A_Modificar and \
                 "director" in Pelicula_A_Modificar  and "reparto" in Pelicula_A_Modificar \
                     and "genero" in Pelicula_A_Modificar and "sinopsis" in Pelicula_A_Modificar and "img" in Pelicula_A_Modificar and \
                     "duracion" in Pelicula_A_Modificar:

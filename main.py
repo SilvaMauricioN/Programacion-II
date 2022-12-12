@@ -18,10 +18,8 @@ while opcion!=3:
                     fc.Generos()
                 elif opcion==3:
                     fc.Buscar_Director()
-                    #no funciona
                 elif opcion==4:
-                    fc.Buscar_Pelicula_img()
-                    #no funciona
+                    fc.Buscar_Pelicula_Portada()
                 elif opcion==5:
                     break
                 elif opcion==6:

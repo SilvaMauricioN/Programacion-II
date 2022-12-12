@@ -51,13 +51,12 @@ def Buscar_Director():
     else:
         print(Peliculas)
 
-def Buscar_Pelicula_img():
-    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
-    Peliculas = Datos.json()
-    for i in Peliculas["Movies"]:
-        if i["img"]!="":
-            print(i["titulo"],i["año"],i["director"],i["genero"],i["duracion"],"\n",
-                  i["reparto"["actor"]],"como",i["reparto"["personaje"]],"\n")
+def Buscar_Pelicula_Portada():
+    Datos = requests.get("http://127.0.0.1:5000/Portada/Peliculas")
+    Portada = Datos.json()
+    for i in Portada:
+        print(i["titulo"])
+        print(i["img"])
 
 def Lista_Directores():
     print("Estos son los directores presentes en la plataforma.\n")
@@ -77,9 +76,9 @@ def Generos():
 #Modificar pelicula existente
 def modificar_peliculas():
     
-    pelicula = input("Ingrese el Nombre de la Pelicula a Modificar: ")
+    peliculas = input("Ingrese el Nombre de la Pelicula a Modificar: ")
 
-    Verificar = Existe_Pelicula(pelicula)
+    Verificar = Existe_Pelicula(peliculas)
 
     if Verificar:
         pelicula=input("Ingrese nuevo nombre: ")
@@ -111,7 +110,7 @@ def modificar_peliculas():
         pelicula_a_modificar['duracion']=duracion
         pelicula_a_modificar['reparto']=reparto
         
-        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+pelicula, json=pelicula_a_modificar)
+        Datos = requests.put("http://127.0.0.1:5000/Modificar/"+peliculas, json=pelicula_a_modificar)
         print(Datos.url)
         print(pelicula_a_modificar)
         mensaje=Datos.json()
@@ -179,6 +178,3 @@ def Eliminar_Pelicula():
     Datos = requests.delete("http://127.0.0.1:5000/Eliminar/"+titulo)
     mensaje=Datos.json()
     print(mensaje)
-    
-def modificar_peliculas():
-    print("algo")
