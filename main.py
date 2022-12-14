@@ -4,7 +4,7 @@ import os
 
 opcion=0
 os.system("cls")
-while opcion!=3:
+while opcion!=8:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
@@ -30,6 +30,7 @@ while opcion!=3:
                     break
             else:
                 print("Algun dato esta mal")
+                break
 #ingreso en modo publico
     elif opcion== 2:
         
