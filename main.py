@@ -21,7 +21,7 @@ while opcion!=3:
                 elif opcion==4:
                     fc.Buscar_Pelicula_Portada()
                 elif opcion==5:
-                    break
+                    print(fc.Todas_las_Peliculas())
                 elif opcion==6:
                     fc.modificar_peliculas()
                 elif opcion==7:

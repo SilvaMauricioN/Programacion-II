@@ -16,6 +16,10 @@ def Existe_Pelicula(Pelicula):
     else:
         return(False)
 
+def Todas_las_Peliculas():
+    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
+    Peliculas = Datos.json()
+    return Peliculas
 
 #Modo Publico
 #funcion para ver las ultimas 10 pelicuas subidas
