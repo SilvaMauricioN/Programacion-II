@@ -263,16 +263,17 @@ def Portadas():
         return jsonify(ImgPortada)
 
 #Agregar Nueva  Pelicula
+@app.route("/Agregar/Pelicula", methods=["POST"])
 def Nueva_Pelicula():
 
     nueva_pelicula=request.get_json()
     
-    if "id" in nueva_pelicula and "titulo" in nueva_pelicula and "año" in nueva_pelicula and "director" in nueva_pelicula  and "reparto" in nueva_pelicula \
+    if "titulo" in nueva_pelicula and "año" in nueva_pelicula and "director" in nueva_pelicula  and "reparto" in nueva_pelicula \
         and "genero" in nueva_pelicula and "sinopsis" in nueva_pelicula and "img" in nueva_pelicula and "duracion" in nueva_pelicula:
 
         Verificar = Existe_Pelicula(nueva_pelicula['titulo'])
 
-        Abrir_Generos(nueva_pelicula)
+        Agregar_Genero(nueva_pelicula)
         Agregar_Genero(nueva_pelicula)
         Agregar_Objeto_Comentario(nueva_pelicula['titulo'])
 

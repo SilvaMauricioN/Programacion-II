@@ -95,7 +95,8 @@ def menu_usuario():
     "5- Cargar Peliculas \n"
     "6- Modificar pelicula.\n"
     "7- Eliminar una pelicula.\n"
-    "8- Volver al menu inicial.\n")
+    "8- Volver al menu inicial.\n"
+    "9- Agregar comentario a una peli existete.\n")
     opcion= control_de_entrada_usuario()
     return opcion
 
@@ -315,7 +316,7 @@ def Cargar_Pelicula():
         "nombre":"",
         "opinion":""
         }
-    
+
     reparto=[]
     op=0
 
@@ -323,8 +324,7 @@ def Cargar_Pelicula():
         print()
         print("Menu Carga Actores")
         print("1) Cargar Actor y su personaje:")
-        print("2) Ingrese Comentario")
-        print("3) Salir")
+        print("2) Salir")
         
         op=input("Ingrese su opcion: ")
         print()
@@ -338,19 +338,8 @@ def Cargar_Pelicula():
                 "actor":actor,
                 "personaje":personaje
                 })
-        elif op == '2':
-            usuario=input("Ingrese ID de Usuario:")
-            nombre=input("Ingrese Nombre: ")
-            opinion=input("Ingrese su opinion: ")
-
-            comentario['id_usuario']=usuario
-            comentario['nombre']=nombre
-            comentario['opinion']=opinion
-
-
-        elif op =='3':
+        elif op =='2':
             break
-           
 
     nueva_pelicula={
         "titulo":"",
@@ -374,23 +363,35 @@ def Cargar_Pelicula():
     #CArgo pelicula a api
     Datos = requests.post('http://127.0.0.1:5000/Agregar/Pelicula', json=nueva_pelicula)
     mensaje1 = Datos.json()
-    print(mensaje1)
-    #Cargo comentario a api        
-    Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
-    mensaje=Datos_Comentarios.json()
-    print(mensaje)
+    print(mensaje1,"\n")
+    aux=""
+    while aux!="NO":
+        aux=input("¿Desea agregar un comentario? si/no")
+        aux=aux.upper()
+        if aux=="SI":
+            comentario={
+            "id_usuario":"",
+            "nombre":"",
+            "opinion":""
+            }
+            usuario=input("Ingrese ID de Usuario:")
+            nombre=input("Ingrese Nombre: ")
+            opinion=input("Ingrese su opinion: ")
 
+            comentario['id_usuario']=usuario
+            comentario['nombre']=nombre
+            comentario['opinion']=opinion
 
-
-url = "http://127.0.0.1:5000/Usuarios"
-
-
-try:
-    r = requests.get(url, timeout=1)
-    print('Response Code:', r.status_code)
-    servidor_apagado=False
-    print(servidor_apagado)
-except Timeout as ex:
-    servidor_apagado=True
-    print("ok",ex)
-    print(servidor_apagado)
+            Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
+            mensaje=Datos_Comentarios.json()
+            print(mensaje)
+            break
+        
+def Control_servidor():
+    url = "http://127.0.0.1:5000/Usuarios"
+    try:
+        requests.get(url, timeout=1)
+        return True
+    except Timeout: 
+        return exit("El servidor no esta en linea.")
+        
