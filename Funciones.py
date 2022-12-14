@@ -1,4 +1,6 @@
 import requests
+from requests import Timeout
+
 #funciones de Control
 
 def Existe_Pelicula(Pelicula):
@@ -258,11 +260,137 @@ def Modificar_Pelicula():
         
 
         Datos = requests.put("http://127.0.0.1:5000/Modificar/Peliculas", json=Peliculas)
-      
+       
         mensaje=Datos.json()
         print(mensaje)
     else:
         print("La pelicula no existe")
 
 
+def Cargar_Comentario():
+    pelicula=input("Nombre de la Pelicula: ")
+    Verificar=Existe_Pelicula(pelicula)
 
+    if Verificar == True:
+
+        comentario={
+            "id_usuario":"",
+            "nombre":"",
+            "opinion":""
+            }
+
+        usuario=input("Ingrese ID de Usuario:")
+        nombre=input("Ingrese Nombre: ")
+        opinion=input("Ingrese su opinion: ")
+
+        comentario['id_usuario']=usuario
+        comentario['nombre']=nombre
+        comentario['opinion']=opinion
+
+        Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+pelicula, json=comentario)
+        mensaje=Datos_Comentarios.json()
+        print(mensaje)
+    else:
+        print("La Pelicula No existe")
+
+def Cargar_Pelicula():
+
+    titulo= input("Ingrese el nombre de la pelicula: ")
+    año= input("Ingrese el año: ")
+    print()
+    Lista_Directores()
+    print()
+    director= input("Ingrese el Director: ")
+    print()
+    Generos()
+    print()
+    genero= input("Ingrese el genero: ")
+    print()
+    sinopsis= input("Ingrese la sinopsis: ")
+    img= input("Ingrese la ur de la portada: ")
+    duracion= input("Ingrese el tiempo de duracion:")
+
+    comentario={
+        "id_usuario":"",
+        "nombre":"",
+        "opinion":""
+        }
+    
+    reparto=[]
+    op=0
+
+    while op !=2:
+        print()
+        print("Menu Carga Actores")
+        print("1) Cargar Actor y su personaje:")
+        print("2) Ingrese Comentario")
+        print("3) Salir")
+        
+        op=input("Ingrese su opcion: ")
+        print()
+        if op == '1':
+
+            actor=input("Nombre del Actor: ")
+            personaje=input("Nombre del Personaje: ")
+
+            reparto.append({
+
+                "actor":actor,
+                "personaje":personaje
+                })
+        elif op == '2':
+            usuario=input("Ingrese ID de Usuario:")
+            nombre=input("Ingrese Nombre: ")
+            opinion=input("Ingrese su opinion: ")
+
+            comentario['id_usuario']=usuario
+            comentario['nombre']=nombre
+            comentario['opinion']=opinion
+
+
+        elif op =='3':
+            break
+           
+
+    nueva_pelicula={
+        "titulo":"",
+        "año":"",
+        "director":"",
+        "reparto":"",
+        "genero":"",
+        "sinopsis":"",
+        "img":"",
+        "duracion":""
+    }
+
+    nueva_pelicula['titulo']=titulo
+    nueva_pelicula['año']=año
+    nueva_pelicula['director']=director
+    nueva_pelicula['genero']=genero
+    nueva_pelicula['sinopsis']=sinopsis
+    nueva_pelicula['img']=img
+    nueva_pelicula['duracion']=duracion  
+    nueva_pelicula['reparto']=reparto
+    #CArgo pelicula a api
+    Datos = requests.post('http://127.0.0.1:5000/Agregar/Pelicula', json=nueva_pelicula)
+    mensaje1 = Datos.json()
+    print(mensaje1)
+    #Cargo comentario a api        
+    Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
+    mensaje=Datos_Comentarios.json()
+    print(mensaje)
+
+
+
+url = "http://127.0.0.1:5000/Usuarios"
+
+
+try:
+    r = requests.get(url, timeout=1)
+    print('Response Code:', r.status_code)
+    servidor_apagado=False
+    print(servidor_apagado)
+except Timeout as ex:
+    servidor_apagado=True
+    print("ok",ex)
+    print(servidor_apagado)
