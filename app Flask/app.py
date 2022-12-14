@@ -22,16 +22,48 @@ def Existe_Pelicula(Pelicula):
 
 def Existen_Comentarios(Pelicula):
 
-    Comentarios = Abrir_Comentarios()
-    
+    Comentarios = Abrir_Comentarios()    
+    critica=[]
     for i in Comentarios['criticas']:
        
-        if i['Nombre_pelicula'].upper() == Pelicula.upper():           
+        if i['Nombre_pelicula'].upper() == Pelicula.upper():
+            critica.append(i['comentarios'])
 
-            if len(i['comentarios']) >= 1:
-                Existe=True
-            else:
-                Existe=False    
+    if len(critica) ==1:
+        Existe=True
+    else:
+        Existe=False    
+    
+    return Existe
+
+def Existe_Director(nueva_pelicula):
+    Directores=Abrir_Directores()
+    director=[]
+    #Verifico si el director existe en json directores, si no existe lo actualizo con el nuevo director  
+    for i in Directores['directores']:
+        
+        if i['nombre_director'].upper() == nueva_pelicula["director"].upper():
+            director.append(i['nombre_director'])
+
+    if len(director)>=1:
+        Existe=True
+    else:
+        Existe=False    
+
+    return Existe
+
+def Existe_Genero(nueva_pelicula):
+    Generos=Abrir_Generos()
+    genero=[]
+    for i in Generos['Generos']:
+
+        if i['genero_pelicula'].upper() == nueva_pelicula["genero"].upper():
+            genero.append(i['genero_pelicula'])
+    if len(genero)>=1:
+        Existe=True
+    else:
+        Existe=False
+    
     return Existe
 
 #Funciones Para Abrir los archivos json
@@ -69,6 +101,9 @@ def Abrir_Comentarios():
     return Comentarios
 #Funciones para modificar peliculas
 def Agregar_Pelicula(nueva_pelicula):
+    Peliculas=Abrir_Peliculas()
+    #Cargo el id de la nueva pelicula
+    nueva_pelicula['id']=str(len(Peliculas['Movies']) + 1)
 
     with open ("Peliculas.json", "r+", encoding='utf-8') as archivo:
         data = json.load(archivo)
@@ -79,19 +114,15 @@ def Agregar_Pelicula(nueva_pelicula):
 def Agregar_Director(nueva_pelicula):
 
     Directores = Abrir_Directores()
+    verifica = Existe_Director(nueva_pelicula)
 
     nuevo_director={
         "id_director":"",
         "nombre_director":""
         }
     #Verifico si el director existe en json directores, si no existe lo actualizo con el nuevo director
-    for i in Directores:
-
-        if i["id_director"].upper() == nueva_pelicula["director"].upper():
-            Existe=True
-        else:
-            Existe=False
-    if Existe != True:
+    
+    if verifica != True:
 
         nuevo_director["id_director"]=str(len(Directores['directores']) + 1)
         nuevo_director["nombre_director"]=nueva_pelicula["director"]
@@ -104,19 +135,13 @@ def Agregar_Director(nueva_pelicula):
 
 def Agregar_Genero(nueva_pelicula):
 
-    Generos = Abrir_Generos()
     nuevo_genero={
         "genero_pelicula":""
-        }
-    
+        }    
     #Verifico si el genero existe en json genero, si no existe lo actualizo con el nuevo genero
-    for i in Generos['Generos']:
-        if nueva_pelicula["genero"] in i.values():
-            Existe=True
-        else:
-            Existe=False
+    verifica=Existe_Genero(nueva_pelicula)
     
-    if Existe != True:
+    if verifica != True:
 
         nuevo_genero['genero_pelicula']=nueva_pelicula['genero']
 
@@ -125,6 +150,19 @@ def Agregar_Genero(nueva_pelicula):
             data["Generos"].append(nuevo_genero)
             archivo.seek(0)
             json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
+
+def Agregar_Comentario(Pelicula,Nuevo_Comentario):
+
+    Comentarios=Abrir_Comentarios()
+
+    for i in Comentarios['criticas']:
+        if i['Nombre_pelicula'].upper() == Pelicula.upper():
+            i['comentarios'].append(Nuevo_Comentario)
+
+    with open ("Comentarios.json", "w+", encoding='utf-8') as archivo:
+        data=Comentarios
+        archivo.seek(0)
+        json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
 
 def Borrar_Pelicula(Pelicula):
 
@@ -139,8 +177,29 @@ def Borrar_Pelicula(Pelicula):
         with open ("Peliculas.json", "w", encoding='utf-8') as archivo:
             json.dump(Peliculas,archivo, indent=4, ensure_ascii=False, sort_keys=False)
 
-#RUTAS/ENDPOINTS        
+#Agregar diccionaro de comentarios de la nueva pelicula
+def Agregar_Objeto_Comentario(nueva_pelicula):
+    Comentarios=Abrir_Comentarios()
+    verificar=Existen_Comentarios(nueva_pelicula)
 
+    if verificar == False:
+
+        Nuevo_Pelicula_Comentario={
+                "Nombre_pelicula":"",
+                "id_pelicula":"",            
+                "comentarios":[]
+                }
+       
+        Nuevo_Pelicula_Comentario['Nombre_pelicula']=nueva_pelicula
+        Nuevo_Pelicula_Comentario['id_pelicula']=str(len(Comentarios['criticas']) + 1)
+        Comentarios['criticas'].append(Nuevo_Pelicula_Comentario)
+
+        with open ("Comentarios.json", "w+", encoding='utf-8') as archivo:
+            data=Comentarios
+            archivo.seek(0)
+            json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
+
+#RUTAS/ENDPOINTS
 #Lista de Usuarios
 @app.route("/Usuarios")
 def Devolver_Usuarios():
@@ -179,13 +238,13 @@ def Peliculas_Director(Director):
             Pelicula['peliculas'].append(i['titulo'])
     
     if len(Pelicula['peliculas'])==0:
-        return Response("{Director, No Encontrado}", str(HTTPStatus.BAD_REQUEST))    
+        return jsonify("{Director, No Encontrado}")   
     else:
         return jsonify(Pelicula)
 
 #Peliculas con imagen de portada
 @app.route("/Portada/Peliculas")
-def genero():
+def Portadas():
 
     ImgPortada=[
     ]
@@ -215,14 +274,15 @@ def Nueva_Pelicula():
 
         Abrir_Generos(nueva_pelicula)
         Agregar_Genero(nueva_pelicula)
+        Agregar_Objeto_Comentario(nueva_pelicula['titulo'])
 
         if Verificar == True:
-            return Response("La Pelicula Ya Existe", status=HTTPStatus.OK)
+            return jsonify("La Pelicula Ya Existe")
         else:
             Agregar_Pelicula(nueva_pelicula)
-            return Response("Pelicula Cargada Existosamente", status=HTTPStatus.OK)
+            return jsonify("Pelicula Cargada Existosamente")
     else:
-        return Response("Falta un Campo", str(HTTPStatus.BAD_REQUEST))
+        return jsonify("Falta un Campo")
 
 #Eliminar Pelicula
 @app.route("/Eliminar/<string:Pelicula>", methods=["DELETE"])
@@ -281,3 +341,38 @@ def Modificar_Pelicula(Pelicula):
 
     else:
         return jsonify("La Pelicula No Existe")
+
+#modificar pelicula desde programa python
+@app.route("/Modificar/Peliculas", methods=['PUT'])
+def Cargar_Modificaciones():    
+    
+    pelicula_A_Modificar = request.get_json()
+
+    if 'Movies' in pelicula_A_Modificar:
+
+        with open ("Peliculas.json", "w+", encoding='utf-8') as archivo:
+            data=pelicula_A_Modificar
+            archivo.seek(0)
+            json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
+
+        return jsonify("Pelicula Modificada Exitosamente")
+    else:
+        return jsonify("La ruta seleccionada no corresponde con el formato de json enviado")    
+
+
+@app.route("/Comentarios/<string:Pelicula>", methods=["POST"])
+def Nuevo_Comentario(Pelicula):
+    verificar=Existe_Pelicula(Pelicula)
+    Nuevo_Comentario=request.get_json()
+
+    if verificar:
+        if "id_usuario" in Nuevo_Comentario and "nombre" in Nuevo_Comentario and "opinion" in Nuevo_Comentario:
+
+            Agregar_Comentario(Pelicula,Nuevo_Comentario)
+            return jsonify("Comentario Cargado")
+        else:
+            return jsonify("Falta un campo")
+    else:
+        return jsonify('La pelicula NO Existe')
+
+            
