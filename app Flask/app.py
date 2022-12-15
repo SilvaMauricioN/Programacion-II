@@ -25,15 +25,11 @@ def Existen_Comentarios(Pelicula):
     Comentarios = Abrir_Comentarios()    
     critica=[]
     for i in Comentarios['criticas']:
-       
         if i['Nombre_pelicula'].upper() == Pelicula.upper():
-            critica.append(i['comentarios'])
-
-    if len(critica) ==1:
-        Existe=True
-    else:
-        Existe=False    
-    
+            if i["comentarios"]==critica:
+                Existe=False
+            else:
+                Existe=True    
     return Existe
 
 def Existe_Director(nueva_pelicula):
@@ -180,24 +176,20 @@ def Borrar_Pelicula(Pelicula):
 #Agregar diccionaro de comentarios de la nueva pelicula
 def Agregar_Objeto_Comentario(nueva_pelicula):
     Comentarios=Abrir_Comentarios()
-    verificar=Existen_Comentarios(nueva_pelicula)
-
-    if verificar == False:
-
-        Nuevo_Pelicula_Comentario={
-                "Nombre_pelicula":"",
-                "id_pelicula":"",            
-                "comentarios":[]
-                }
+    Nuevo_Pelicula_Comentario={
+            "Nombre_pelicula":"",
+            "id_pelicula":"",            
+            "comentarios":[]
+            }
        
-        Nuevo_Pelicula_Comentario['Nombre_pelicula']=nueva_pelicula
-        Nuevo_Pelicula_Comentario['id_pelicula']=str(len(Comentarios['criticas']) + 1)
-        Comentarios['criticas'].append(Nuevo_Pelicula_Comentario)
+    Nuevo_Pelicula_Comentario['Nombre_pelicula']=nueva_pelicula
+    Nuevo_Pelicula_Comentario['id_pelicula']=str(len(Comentarios['criticas']) + 1)
+    Comentarios['criticas'].append(Nuevo_Pelicula_Comentario)
 
-        with open ("Comentarios.json", "w+", encoding='utf-8') as archivo:
-            data=Comentarios
-            archivo.seek(0)
-            json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
+    with open ("Comentarios.json", "w+", encoding='utf-8') as archivo:
+        data=Comentarios
+        archivo.seek(0)
+        json.dump(data,archivo, indent=4, ensure_ascii = False, sort_keys = False)
 
 #RUTAS/ENDPOINTS
 #Lista de Usuarios
@@ -272,15 +264,14 @@ def Nueva_Pelicula():
         and "genero" in nueva_pelicula and "sinopsis" in nueva_pelicula and "img" in nueva_pelicula and "duracion" in nueva_pelicula:
 
         Verificar = Existe_Pelicula(nueva_pelicula['titulo'])
-
-        Agregar_Genero(nueva_pelicula)
-        Agregar_Genero(nueva_pelicula)
-        Agregar_Objeto_Comentario(nueva_pelicula['titulo'])
-
+        
         if Verificar == True:
             return jsonify("La Pelicula Ya Existe")
         else:
             Agregar_Pelicula(nueva_pelicula)
+            Agregar_Director(nueva_pelicula)
+            Agregar_Genero(nueva_pelicula)
+            Agregar_Objeto_Comentario(nueva_pelicula['titulo'])
             return jsonify("Pelicula Cargada Existosamente")
     else:
         return jsonify("Falta un Campo")
@@ -367,7 +358,7 @@ def Nuevo_Comentario(Pelicula):
     Nuevo_Comentario=request.get_json()
 
     if verificar:
-        if "id_usuario" in Nuevo_Comentario and "nombre" in Nuevo_Comentario and "opinion" in Nuevo_Comentario:
+        if "id_usuario" in Nuevo_Comentario and "nombre" in Nuevo_Comentario and "opinion" in Nuevo_Comentario or Nuevo_Comentario==[]:
 
             Agregar_Comentario(Pelicula,Nuevo_Comentario)
             return jsonify("Comentario Cargado")
