@@ -1,5 +1,4 @@
 import Funciones as fc
-import requests
 import os
 
 opcion=0
@@ -23,7 +22,7 @@ while opcion!=8:
                 elif opcion==5:
                     break
                 elif opcion==6:
-                    fc.modificar_peliculas()
+                    fc.Modificar_Pelicula()
                 elif opcion==7:
                     fc.Eliminar_Pelicula()
                 elif opcion==8:

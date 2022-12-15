@@ -263,6 +263,7 @@ def Portadas():
         return jsonify(ImgPortada)
 
 #Agregar Nueva  Pelicula
+@app.route("/Agregar/Pelicula>", methods=["POST"])
 def Nueva_Pelicula():
 
     nueva_pelicula=request.get_json()

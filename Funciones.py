@@ -266,7 +266,6 @@ def Modificar_Pelicula():
     else:
         print("La pelicula no existe")
 
-
 def Cargar_Comentario():
     pelicula=input("Nombre de la Pelicula: ")
     Verificar=Existe_Pelicula(pelicula)
@@ -319,7 +318,7 @@ def Cargar_Pelicula():
     reparto=[]
     op=0
 
-    while op !=2:
+    while op !=3:
         print()
         print("Menu Carga Actores")
         print("1) Cargar Actor y su personaje:")
@@ -381,16 +380,14 @@ def Cargar_Pelicula():
     print(mensaje)
 
 
-
-url = "http://127.0.0.1:5000/Usuarios"
-
-
-try:
-    r = requests.get(url, timeout=1)
-    print('Response Code:', r.status_code)
-    servidor_apagado=False
-    print(servidor_apagado)
-except Timeout as ex:
-    servidor_apagado=True
-    print("ok",ex)
-    print(servidor_apagado)
+Cargar_Pelicula()
+# url = "http://127.0.0.1:5000/Usuarios"
+# try:
+#     r = requests.get(url, timeout=1)
+#     print('Response Code:', r.status_code)
+#     servidor_apagado=False
+#     print(servidor_apagado)
+# except Timeout as ex:
+#     servidor_apagado=True
+#     print("ok",ex)
+#     print(servidor_apagado)
