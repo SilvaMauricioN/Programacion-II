@@ -362,33 +362,23 @@ def Cargar_Pelicula():
     #CArgo pelicula a api
     Datos = requests.post('http://127.0.0.1:5000/Agregar/Pelicula', json=nueva_pelicula)
     mensaje1 = Datos.json()
-    print(mensaje1,"\n")
-    aux=""
-    while aux!="NO":
-        aux=input("¿Desea agregar un comentario? si/no")
-        aux=aux.upper()
-        if aux=="SI":
-            comentario={
-            "id_usuario":"",
-            "nombre":"",
-            "opinion":""
-            }
-            usuario=input("Ingrese ID de Usuario:")
-            nombre=input("Ingrese Nombre: ")
-            opinion=input("Ingrese su opinion: ")
+    print(mensaje1)
+    #Cargo comentario a api        
+    Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
+    mensaje=Datos_Comentarios.json()
+    print(mensaje)
 
-            comentario['id_usuario']=usuario
-            comentario['nombre']=nombre
-            comentario['opinion']=opinion
 
-Cargar_Pelicula()
-# url = "http://127.0.0.1:5000/Usuarios"
-# try:
-#     r = requests.get(url, timeout=1)
-#     print('Response Code:', r.status_code)
-#     servidor_apagado=False
-#     print(servidor_apagado)
-# except Timeout as ex:
-#     servidor_apagado=True
-#     print("ok",ex)
-#     print(servidor_apagado)
+
+url = "http://127.0.0.1:5000/Usuarios"
+
+
+try:
+    r = requests.get(url, timeout=1)
+    print('Response Code:', r.status_code)
+    servidor_apagado=False
+    print(servidor_apagado)
+except Timeout as ex:
+    servidor_apagado=True
+    print("ok",ex)
+    print(servidor_apagado)
