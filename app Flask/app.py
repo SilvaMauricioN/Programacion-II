@@ -173,6 +173,18 @@ def Borrar_Pelicula(Pelicula):
         with open ("Peliculas.json", "w", encoding='utf-8') as archivo:
             json.dump(Peliculas,archivo, indent=4, ensure_ascii=False, sort_keys=False)
 
+def Borrar_Comentario(pelicula):
+
+    comentarios= Abrir_Comentarios()
+    
+    for i in comentarios["criticas"]:
+        
+        if i["Nombre_pelicula"].upper() == pelicula.upper():
+            comentarios["criticas"].remove(i)
+    
+    with open ("Comentarios.json", "w", encoding='utf-8') as archivo:
+            json.dump(comentarios,archivo, indent=4, ensure_ascii=False, sort_keys=False)
+
 #Agregar diccionaro de comentarios de la nueva pelicula
 def Agregar_Objeto_Comentario(nueva_pelicula):
     Comentarios=Abrir_Comentarios()
@@ -288,6 +300,7 @@ def Eliminar_Pelicula(Pelicula):
             return jsonify("No se puede eliminar tiene comentarios")
         else:
             Borrar_Pelicula(Pelicula)
+            Borrar_Comentario(Pelicula)
             return jsonify("Pelicula Eliminada")
     else:
         return jsonify("La Pelicula No Existe")

@@ -94,9 +94,9 @@ def menu_usuario():
     "4- Pelicualas con Portada.\n"
     "5- Cargar Peliculas \n"
     "6- Modificar pelicula.\n"
-    "7- Eliminar una pelicula.\n"
-    "8- Volver al menu inicial.\n"
-    "9- Agregar comentario a una peli existete.\n")
+    "7- Agregar comentario a una peli existete.\n"
+    "8- Eliminar pelicula.\n"
+    "9- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
     return opcion
 

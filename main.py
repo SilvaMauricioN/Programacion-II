@@ -5,7 +5,7 @@ import os
 opcion=0
 os.system("cls")
 fc.Control_servidor()
-while opcion!=8:
+while opcion!=9:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
@@ -26,11 +26,11 @@ while opcion!=8:
                 elif opcion==6:
                     fc.Modificar_Pelicula()
                 elif opcion==7:
-                    fc.Eliminar_Pelicula()
-                elif opcion==8:
-                    break
-                elif opcion==9:
                     fc.Cargar_Comentario()
+                elif opcion==8:
+                    fc.Eliminar_Pelicula()
+                elif opcion==9:
+                    break
             else:
                 print("Algun dato esta mal")
                 break
