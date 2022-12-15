@@ -40,8 +40,6 @@ def Buscar_Director():
 
     director =input("Ingrese el Nombre del Director: ")
     Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
-    print (Datos.url)
-    
     Peliculas= Datos.json()
     print(director)
 
@@ -94,7 +92,7 @@ def menu_usuario():
     "4- Pelicualas con Portada.\n"
     "5- Cargar Peliculas \n"
     "6- Modificar pelicula.\n"
-    "7- Agregar comentario a una peli existete.\n"
+    "7- Agregar comentario a una pelicula existente.\n"
     "8- Eliminar pelicula.\n"
     "9- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
