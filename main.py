@@ -4,7 +4,7 @@ import os
 opcion=0
 os.system("cls")
 fc.Control_servidor()
-while opcion!=9:
+while opcion!=3:
     opcion=fc.menu_inicial()
     #ingreso con usuario
     if opcion== 1:
