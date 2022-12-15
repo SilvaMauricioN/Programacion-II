@@ -267,7 +267,6 @@ def Modificar_Pelicula():
     else:
         print("La pelicula no existe")
 
-
 def Cargar_Comentario():
     pelicula=input("Nombre de la Pelicula: ")
     Verificar=Existe_Pelicula(pelicula)
@@ -320,7 +319,7 @@ def Cargar_Pelicula():
     reparto=[]
     op=0
 
-    while op !=2:
+    while op !=3:
         print()
         print("Menu Carga Actores")
         print("1) Cargar Actor y su personaje:")
@@ -363,35 +362,23 @@ def Cargar_Pelicula():
     #CArgo pelicula a api
     Datos = requests.post('http://127.0.0.1:5000/Agregar/Pelicula', json=nueva_pelicula)
     mensaje1 = Datos.json()
-    print(mensaje1,"\n")
-    aux=""
-    while aux!="NO":
-        aux=input("¿Desea agregar un comentario? si/no")
-        aux=aux.upper()
-        if aux=="SI":
-            comentario={
-            "id_usuario":"",
-            "nombre":"",
-            "opinion":""
-            }
-            usuario=input("Ingrese ID de Usuario:")
-            nombre=input("Ingrese Nombre: ")
-            opinion=input("Ingrese su opinion: ")
+    print(mensaje1)
+    #Cargo comentario a api        
+    Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
+    mensaje=Datos_Comentarios.json()
+    print(mensaje)
 
-            comentario['id_usuario']=usuario
-            comentario['nombre']=nombre
-            comentario['opinion']=opinion
 
-            Datos_Comentarios = requests.post('http://127.0.0.1:5000/Comentarios/'+titulo, json=comentario)
-            mensaje=Datos_Comentarios.json()
-            print(mensaje)
-            break
-        
-def Control_servidor():
-    url = "http://127.0.0.1:5000/Usuarios"
-    try:
-        requests.get(url, timeout=1)
-        return True
-    except Timeout: 
-        return exit("El servidor no esta en linea.")
-        
+
+url = "http://127.0.0.1:5000/Usuarios"
+
+
+try:
+    r = requests.get(url, timeout=1)
+    print('Response Code:', r.status_code)
+    servidor_apagado=False
+    print(servidor_apagado)
+except Timeout as ex:
+    servidor_apagado=True
+    print("ok",ex)
+    print(servidor_apagado)

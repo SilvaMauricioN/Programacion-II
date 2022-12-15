@@ -1,5 +1,4 @@
 import Funciones as fc
-import requests
 import os
 
 opcion=0
