@@ -2,11 +2,14 @@ import requests
 from requests import Timeout
 import os
 #funciones de Control
-
-def Existe_Pelicula(Pelicula):
+def Pedir_Peliculas_A_API():
     Datos = requests.get("http://127.0.0.1:5000/Peliculas")
     Peliculas = Datos.json()
+    return(Peliculas)
 
+def Existe_Pelicula(Pelicula):
+    Peliculas=Pedir_Peliculas_A_API()
+   
     movie=[]
     for i in Peliculas["Movies"]:
         if i['titulo'].upper() == Pelicula.upper():      
@@ -21,10 +24,8 @@ def Existe_Pelicula(Pelicula):
 #Modo Publico
 #funcion para ver las ultimas 10 pelicuas subidas
 def Ultimas_Peliculas():
-
-    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
-    Peliculas = Datos.json()
-    
+    Peliculas=Pedir_Peliculas_A_API()
+        
     print("Ultimas Peliculas")
     print()
     #calulo en que posicion empezar
@@ -51,9 +52,7 @@ def Buscar_Peliculas_del_Director():
         print(Peliculas)
 
 def Buscar_Pelicula_por_Actor():
-    datos=requests.get("http://127.0.0.1:5000/Peliculas")
-    Peliculas=datos.json()
-
+    Peliculas=Pedir_Peliculas_A_API()   
     actor=input("Ingrese el nombre del actor:")
 
     Pelicula={
@@ -110,7 +109,24 @@ def Lista_Directores():
     directores=datos.json()
     for i in directores["directores"]:
         print(i["nombre_director"])
-    
+
+def Pelicula_Especifica():
+    pelicula=input("Ingrese nombre de pelicula: ")
+    print()
+    Peliculas=Pedir_Peliculas_A_API()
+
+    for i in Peliculas['Movies']:
+        if i['titulo'].upper() == pelicula.upper():
+            print('Titulo: ',i['titulo'])
+            print('Director:',i['director'])
+            print('Genero: ',i['genero'])
+            print('Sinopsis: ',i['sinopsis'])
+            print()
+            print('Reparto')
+            print()
+            for j in i['reparto']:
+                print(j['actor']) 
+
 #Funcion generos
 
 def Generos():
@@ -199,10 +215,7 @@ def Eliminar_Pelicula():
 #modificar_peliculas()
 
 def Verificar_ID(pelicula):
-
-    Datos = requests.get("http://127.0.0.1:5000/Peliculas")
-    Peliculas = Datos.json()
-
+    Peliculas=Pedir_Peliculas_A_API()   
     for i in Peliculas['Movies']:
         if i['titulo'].upper() == pelicula.upper():
             ID = i['id']
@@ -215,8 +228,7 @@ def Modificar_Pelicula():
     Verificar = Existe_Pelicula(pelicula)
 
     if Verificar:
-        Datos = requests.get("http://127.0.0.1:5000/Peliculas")
-        Peliculas = Datos.json()
+        Peliculas=Pedir_Peliculas_A_API()      
         opcion=0
         ID=Verificar_ID(pelicula)
         while opcion != 9:
@@ -453,4 +465,3 @@ def Control_servidor():
     except Timeout: 
         return exit("El servidor no esta en linea.")
 
-Buscar_Pelicula_por_Actor()
