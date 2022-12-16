@@ -117,6 +117,26 @@ def Pelicula_Especifica():
             print()
             for j in i['reparto']:
                 print(j['actor'], end=", ")
+                
+    Critica_Especifica(pelicula)
+
+def Critica_Especifica(titulo):
+    datos=requests.get("http://127.0.0.1:5000/Comentarios")
+    Comentarios=datos.json()
+    print("Criticas")
+    print(titulo.upper())
+    control=False
+    for i in Comentarios['criticas']:
+        if i['Nombre_pelicula'].upper() == titulo.upper():
+            for j in i['comentarios']:
+                control=True
+                print()
+                print("Usuario: ", j['nombre'])
+                print("Critica: ",j['opinion'])
+    
+    if control==False:
+        print("La pelicula no tiene Criticas.!!!")
+    
 
 def Buscar_Pelicula_por_Actor():
     Peliculas=Pedir_Peliculas_A_API()   
