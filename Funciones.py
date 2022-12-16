@@ -118,12 +118,12 @@ def Pelicula_Especifica():
             print()
             for j in i['reparto']:
                 print(j['actor'])
+    Critica_Especifica(pelicula)
 
-def Critica_Especifica():
+def Critica_Especifica(titulo):
     datos=requests.get("http://127.0.0.1:5000/Comentarios")
     Comentarios=datos.json()
     print("Criticas")
-    titulo=input("Ingrese el nombre de la pelicula: ")
     print(titulo.upper())
     control=False
     for i in Comentarios['criticas']:
