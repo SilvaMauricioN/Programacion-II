@@ -1,6 +1,6 @@
 import requests
 from requests import Timeout
-
+import os
 #funciones de Control
 
 def Existe_Pelicula(Pelicula):
@@ -36,7 +36,7 @@ def Ultimas_Peliculas():
         print(i['sinopsis'])
 
 #funcion para buscar peliculas por nombre de director
-def Buscar_Director():
+def Buscar_Peliculas_del_Director():
 
     director =input("Ingrese el Nombre del Director: ")
     Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
@@ -49,6 +49,31 @@ def Buscar_Director():
             print(i)
     else:
         print(Peliculas)
+
+def Buscar_Pelicula_por_Actor():
+    datos=requests.get("http://127.0.0.1:5000/Peliculas")
+    Peliculas=datos.json()
+
+    actor=input("Ingrese el nombre del actor:")
+
+    Pelicula={
+        "actor":"",
+        "pelicula":[]
+    }
+    for i in Peliculas['Movies']:
+        for j in i['reparto']:
+            if j['actor'].upper() == actor.upper():    
+                Pelicula['actor']= actor
+                Pelicula['pelicula'].append( {"peliculas_actor":i["titulo"],"personaje":j["personaje"]})
+                
+    if len(Pelicula["pelicula"])==0:
+        print()
+        print(f"No se encontraron peliculas donde actue {actor}")
+    else:
+        print()
+        print(f"El actor {actor} actuo en esta/s pelicula/s:\n")
+        for i in Pelicula["pelicula"]:
+            print("Pelicula:" ,i["peliculas_actor"],"  Personaje:",i["personaje"])
 
 def Buscar_Pelicula_Portada():
     Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
@@ -86,15 +111,27 @@ def menu_inicial():
 def menu_usuario():
     print()
     print("------ Menu Usuario ------\n"
-    "1- Lista de Directores.\n"
-    "2- Lista de Generos.\n"
-    "3- Peliculas del director. \n"
-    "4- Pelicualas con Portada.\n"
-    "5- Cargar Peliculas \n"
-    "6- Modificar pelicula.\n"
-    "7- Agregar comentario a una pelicula existente.\n"
-    "8- Eliminar pelicula.\n"
-    "9- Volver al menu inicial.\n")
+    "1- Buscar una pelicula especifica.\n"#hacer funcion #agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"#agregar comentarios
+    "3- Lista de Directores.\n"
+    "4- Lista de Generos.\n"
+    "5- Peliculas hechas por un director. \n"
+    "6- Pelicualas con Portada.\n"
+    "7- Cargar Peliculas \n"
+    "8- Modificar pelicula.\n"
+    "9- Agregar comentario a una pelicula existente.\n"
+    "10- Eliminar pelicula.\n"
+    "11- Volver al menu inicial.\n")
+    opcion= control_de_entrada_usuario()
+    return opcion
+
+def menu_publico():
+    print()
+    print("------ Menu Publico ------\n"
+    "1- Peliculas hechas por un director. \n"#agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"#agregar comentarios
+    "3- Ultimas 10 peliculas cargadas. \n"
+    "4- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
     return opcion
 
@@ -122,6 +159,8 @@ def control_de_entrada_usuario():
         entero=input ('Ingrese una opcion: ')
         try:
             entero=int(entero)
+            print("")
+            os.system("cls")
             return entero
         except ValueError:
             print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
@@ -391,5 +430,3 @@ def Control_servidor():
         return True
     except Timeout: 
         return exit("El servidor no esta en linea.")
-        
-
