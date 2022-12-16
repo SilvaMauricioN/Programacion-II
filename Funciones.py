@@ -40,7 +40,7 @@ def Buscar_Director():
 
     director =input("Ingrese el Nombre del Director: ")
     Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
-    print (Datos.url)
+    
     
     Peliculas= Datos.json()
     print(director)
