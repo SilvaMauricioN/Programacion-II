@@ -2,6 +2,14 @@ import requests
 from requests import Timeout
 import os
 #funciones de Control
+def Control_servidor():
+    url = "http://127.0.0.1:5000/Usuarios"
+    try:
+        requests.get(url, timeout=1)
+        return True
+    except Timeout: 
+        return exit("El servidor no esta en linea.")
+
 def Pedir_Peliculas_A_API():
     Datos = requests.get("http://127.0.0.1:5000/Peliculas")
     Peliculas = Datos.json()
@@ -21,35 +29,95 @@ def Existe_Pelicula(Pelicula):
     else:
         return(False)
 
-#Modo Publico
-#funcion para ver las ultimas 10 pelicuas subidas
-def Ultimas_Peliculas():
-    Peliculas=Pedir_Peliculas_A_API()
-        
-    print("Ultimas Peliculas")
-    print()
-    #calulo en que posicion empezar
-    indice=len(Peliculas['Movies'])-10
-    for i in Peliculas['Movies'][indice:]:
-        print()
-        print(i['titulo'])
-        print()
-        print(i['sinopsis'])
+def comprobar_usuario(usuario,contraseña):
+    respuesta=requests.get("http://127.0.0.1:5000/Usuarios")
+    diccionario=respuesta.json()
+    for i in diccionario["Usuarios"]:
+        if i["User name"] == usuario and i["Contraseña"] == contraseña:
+            return True
+    return False
 
-#funcion para buscar peliculas por nombre de director
-def Buscar_Peliculas_del_Director():
+def control_de_entrada_usuario():
+    while True:
+        entero=input ('Ingrese una opcion: ')
+        try:
+            entero=int(entero)
+            print("")
+            os.system("cls")
+            return entero
+        except ValueError:
+            print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
 
-    director =input("Ingrese el Nombre del Director: ")
-    Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
-    Peliculas= Datos.json()
-    print(director)
+def Verificar_ID(pelicula):
+    Peliculas=Pedir_Peliculas_A_API()   
+    for i in Peliculas['Movies']:
+        if i['titulo'].upper() == pelicula.upper():
+            ID = i['id']
+    return ID
 
-    if type(Peliculas) == dict:
-
-        for i in Peliculas['peliculas']:
-            print(i)
+# Usuarios
+def ingreso_usuario():
+    usuario=input("Ingrese usuario: ")
+    contraseña=input ('Ingrese contaseña: ')
+    validacion=comprobar_usuario(usuario,contraseña)
+    if validacion==True:
+        return True
     else:
-        print(Peliculas)
+        return False
+
+# Todos los Menus
+def menu_inicial():
+    print("------ Menu de Inicio ------\n"
+    "1- Ingresar como usuario registrado.\n"
+    "2- Ingresar en modo publico.\n"
+    "3- Salir del programa.")
+    opcion=control_de_entrada_usuario()
+    return opcion
+
+def menu_usuario():
+    print()
+    print("------ Menu Usuario ------\n"
+    "1- Buscar una pelicula especifica.\n"#hacer funcion #agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"
+    "3- Peliculas hechas por un director. \n"
+    "4- Pelicualas con Portada.\n"
+    "5- Agregar comentario a una pelicula.\n"
+    "6- Lista de Directores.\n"
+    "7- Lista de Generos.\n"
+    "8- Cargar Peliculas \n"
+    "9- Modificar pelicula.\n"
+   "10- Eliminar pelicula.\n"
+   "11- Volver al menu inicial.\n")
+    opcion= control_de_entrada_usuario()
+    return opcion
+
+def menu_publico():
+    print()
+    print("------ Menu Publico ------\n"
+    "1- Peliculas hechas por un director. \n"#agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"
+    "3- Ultimas 10 peliculas cargadas. \n"
+    "4- Volver al menu inicial.\n")
+    opcion= control_de_entrada_usuario()
+    return opcion
+
+#Funciones para buscar peliculas /Directores/Generos
+def Pelicula_Especifica():
+    pelicula=input("Ingrese nombre de pelicula: ")
+    print()
+    Peliculas=Pedir_Peliculas_A_API()
+
+    for i in Peliculas['Movies']:
+        if i['titulo'].upper() == pelicula.upper():
+            print('Titulo: ',i['titulo'])
+            print('Director:',i['director'])
+            print('Genero: ',i['genero'])
+            print('Sinopsis: ',i['sinopsis'])
+            print()
+            print('Reparto')
+            print()
+            for j in i['reparto']:
+                print(j['actor'])
 
 def Buscar_Pelicula_por_Actor():
     Peliculas=Pedir_Peliculas_A_API()   
@@ -96,6 +164,20 @@ def Buscar_Pelicula_por_Actor():
                 print("Comentario: ", j['opinion'])
                 print()
 
+def Buscar_Peliculas_del_Director():
+
+    director =input("Ingrese el Nombre del Director: ")
+    Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
+    Peliculas= Datos.json()
+    print(director)
+
+    if type(Peliculas) == dict:
+
+        for i in Peliculas['peliculas']:
+            print(i)
+    else:
+        print(Peliculas)
+
 def Buscar_Pelicula_Portada():
     Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
     Portada = Datos.json()
@@ -110,117 +192,27 @@ def Lista_Directores():
     for i in directores["directores"]:
         print(i["nombre_director"])
 
-def Pelicula_Especifica():
-    pelicula=input("Ingrese nombre de pelicula: ")
-    print()
-    Peliculas=Pedir_Peliculas_A_API()
-
-    for i in Peliculas['Movies']:
-        if i['titulo'].upper() == pelicula.upper():
-            print('Titulo: ',i['titulo'])
-            print('Director:',i['director'])
-            print('Genero: ',i['genero'])
-            print('Sinopsis: ',i['sinopsis'])
-            print()
-            print('Reparto')
-            print()
-            for j in i['reparto']:
-                print(j['actor']) 
-
-#Funcion generos
-
 def Generos():
     print("Estos son los generos presentes en la plataforma.\n")
     datos=requests.get("http://127.0.0.1:5000/Generos")
     generos=datos.json()
     for i in generos["Generos"]:
         print(i["genero_pelicula"])
-#Modificar pelicula existente
 
-# Todos los Menus
-def menu_inicial():
-    print("------ Menu de Inicio ------\n"
-    "1- Ingresar como usuario registrado.\n"
-    "2- Ingresar en modo publico.\n"
-    "3- Salir del programa.")
-    opcion=control_de_entrada_usuario()
-    return opcion
-
-def menu_usuario():
+def Ultimas_10_Peliculas():
+    Peliculas=Pedir_Peliculas_A_API()
+        
+    print("Ultimas Peliculas")
     print()
-    print("------ Menu Usuario ------\n"
-    "1- Buscar una pelicula especifica.\n"#hacer funcion #agregar comentarios
-    "2- Buscar peliculas de de un actor en particular.\n"
-    "3- Lista de Directores.\n"
-    "4- Lista de Generos.\n"
-    "5- Peliculas hechas por un director. \n"
-    "6- Pelicualas con Portada.\n"
-    "7- Cargar Peliculas \n"
-    "8- Modificar pelicula.\n"
-    "9- Agregar comentario a una pelicula existente.\n"
-    "10- Eliminar pelicula.\n"
-    "11- Volver al menu inicial.\n")
-    opcion= control_de_entrada_usuario()
-    return opcion
+    #calulo en que posicion empezar
+    indice=len(Peliculas['Movies'])-10
+    for i in Peliculas['Movies'][indice:]:
+        print()
+        print(i['titulo'])
+        print()
+        print(i['sinopsis'])
 
-def menu_publico():
-    print()
-    print("------ Menu Publico ------\n"
-    "1- Peliculas hechas por un director. \n"#agregar comentarios
-    "2- Buscar peliculas de de un actor en particular.\n"
-    "3- Ultimas 10 peliculas cargadas. \n"
-    "4- Volver al menu inicial.\n")
-    opcion= control_de_entrada_usuario()
-    return opcion
-
-# Usuarios
-def ingreso_usuario():
-    usuario=input("Ingrese usuario: ")
-    contraseña=input ('Ingrese contaseña: ')
-    validacion=comprobar_usuario(usuario,contraseña)
-    if validacion==True:
-        return True
-    else:
-        return False
-
-def comprobar_usuario(usuario,contraseña):
-    respuesta=requests.get("http://127.0.0.1:5000/Usuarios")
-    diccionario=respuesta.json()
-    for i in diccionario["Usuarios"]:
-        if i["User name"] == usuario and i["Contraseña"] == contraseña:
-            return True
-    return False
-#Control de errores y verificación
-
-def control_de_entrada_usuario():
-    while True:
-        entero=input ('Ingrese una opcion: ')
-        try:
-            entero=int(entero)
-            print("")
-            os.system("cls")
-            return entero
-        except ValueError:
-            print("\033[1;31m"+"Error, ingrese un numero.\n"+'\033[0;m')
-
-def Eliminar_Pelicula():
-
-    titulo = input("Nombre de pelicula a eliminar: ")
-    #Variable de Control
-    
-    Datos = requests.delete("http://127.0.0.1:5000/Eliminar/"+titulo)
-    mensaje=Datos.json()
-    print(mensaje)
-    
-#modificar_peliculas()
-
-def Verificar_ID(pelicula):
-    Peliculas=Pedir_Peliculas_A_API()   
-    for i in Peliculas['Movies']:
-        if i['titulo'].upper() == pelicula.upper():
-            ID = i['id']
-
-    return ID
+#Funciones edicion/eliminacion de peliculas y comentarios
 
 def Modificar_Pelicula():
 
@@ -456,12 +448,12 @@ def Cargar_Pelicula():
             mensaje=Datos_Comentarios.json()
             print(mensaje)
             break
-   
-def Control_servidor():
-    url = "http://127.0.0.1:5000/Usuarios"
-    try:
-        requests.get(url, timeout=1)
-        return True
-    except Timeout: 
-        return exit("El servidor no esta en linea.")
 
+def Eliminar_Pelicula():
+
+    titulo = input("Nombre de pelicula a eliminar: ")
+    #Variable de Control
+    
+    Datos = requests.delete("http://127.0.0.1:5000/Eliminar/"+titulo)
+    mensaje=Datos.json()
+    print(mensaje)

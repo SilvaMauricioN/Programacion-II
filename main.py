@@ -13,25 +13,25 @@ while opcion!=3:
             if validacion==True:
                 opcion=fc.menu_usuario()
                 if opcion==1:
-                    fc.Lista_Directores()
+                    print("En proceso.....")
                 elif opcion==2:
-                    fc.Generos()
+                    fc.Buscar_Pelicula_por_Actor()
                 elif opcion==3:
                     fc.Buscar_Peliculas_del_Director()
                 elif opcion==4:
                     fc.Buscar_Pelicula_Portada()
                 elif opcion==5:
-                    fc.Cargar_Pelicula()
-                elif opcion==6:
-                    fc.Modificar_Pelicula()
-                elif opcion==7:
                     fc.Cargar_Comentario()
+                elif opcion==6:
+                    fc.Lista_Directores()
+                elif opcion==7:
+                    fc.Generos()
                 elif opcion==8:
-                    fc.Eliminar_Pelicula()
+                    fc.Cargar_Pelicula()
                 elif opcion==9:
-                    break
+                    fc.Modificar_Pelicula()
                 elif opcion==10:
-                    break
+                    fc.Eliminar_Pelicula()
                 elif opcion==11:
                     break
             else:
@@ -47,7 +47,7 @@ while opcion!=3:
             elif opcion==2:
                 fc.Buscar_Pelicula_por_Actor()
             elif opcion==3:
-                fc.Ultimas_Peliculas()
+                fc.Ultimas_10_Peliculas()
             elif opcion==4:
                     os.system("cls")
                     break
