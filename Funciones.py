@@ -74,6 +74,28 @@ def Buscar_Pelicula_por_Actor():
         print(f"El actor {actor} actuo en esta/s pelicula/s:\n")
         for i in Pelicula["pelicula"]:
             print("Pelicula:" ,i["peliculas_actor"],"  Personaje:",i["personaje"])
+    #Carga de json Comentarios, mostra comentarios de una pelicula
+    datos2=requests.get("http://127.0.0.1:5000/Comentarios")
+    Comentarios=datos2.json()
+    
+    critica=[]
+    for i in Comentarios['criticas']:
+        for j in Pelicula['pelicula']:
+            if i['Nombre_pelicula'].upper() == j['peliculas_actor'].upper():
+                critica.append(i)
+    print()
+    print('Critica')
+    print()
+    for i in critica:
+        if len(i['comentarios']) == 0:
+            print(i['Nombre_pelicula'].upper(), 'No tiene criticas')
+            print()
+        else:           
+            for j in i['comentarios']:
+                print('Pelicula: ',i['Nombre_pelicula'].upper())
+                print("Usuario: ", j['nombre'])
+                print("Comentario: ", j['opinion'])
+                print()
 
 def Buscar_Pelicula_Portada():
     Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
@@ -112,7 +134,7 @@ def menu_usuario():
     print()
     print("------ Menu Usuario ------\n"
     "1- Buscar una pelicula especifica.\n"#hacer funcion #agregar comentarios
-    "2- Buscar peliculas de de un actor en particular.\n"#agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"
     "3- Lista de Directores.\n"
     "4- Lista de Generos.\n"
     "5- Peliculas hechas por un director. \n"
@@ -129,7 +151,7 @@ def menu_publico():
     print()
     print("------ Menu Publico ------\n"
     "1- Peliculas hechas por un director. \n"#agregar comentarios
-    "2- Buscar peliculas de de un actor en particular.\n"#agregar comentarios
+    "2- Buscar peliculas de de un actor en particular.\n"
     "3- Ultimas 10 peliculas cargadas. \n"
     "4- Volver al menu inicial.\n")
     opcion= control_de_entrada_usuario()
@@ -431,4 +453,4 @@ def Control_servidor():
     except Timeout: 
         return exit("El servidor no esta en linea.")
 
-#las
+Buscar_Pelicula_por_Actor()
