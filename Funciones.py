@@ -109,15 +109,14 @@ def Pelicula_Especifica():
 
     for i in Peliculas['Movies']:
         if i['titulo'].upper() == pelicula.upper():
-            print('Titulo: ',i['titulo'])
-            print('Director:',i['director'])
-            print('Genero: ',i['genero'])
+            print('Titulo: ',i['titulo']," ",'Director:',i['director']," ",'Genero: ',i['genero'])
+            print()
             print('Sinopsis: ',i['sinopsis'])
             print()
             print('Reparto')
             print()
             for j in i['reparto']:
-                print(j['actor'])
+                print(j['actor'], end=", ")
 
 def Buscar_Pelicula_por_Actor():
     Peliculas=Pedir_Peliculas_A_API()   

@@ -13,7 +13,7 @@ while opcion!=3:
             if validacion==True:
                 opcion=fc.menu_usuario()
                 if opcion==1:
-                    print("En proceso.....")
+                    fc.Pelicula_Especifica()
                 elif opcion==2:
                     fc.Buscar_Pelicula_por_Actor()
                 elif opcion==3:
