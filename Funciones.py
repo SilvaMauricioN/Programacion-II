@@ -94,7 +94,7 @@ def menu_usuario():
 def menu_publico():
     print()
     print("------ Menu Publico ------\n"
-    "1- Peliculas hechas por un director. \n"#agregar comentarios
+    "1- Peliculas hechas por un director. \n"
     "2- Buscar peliculas de de un actor en particular.\n"
     "3- Ultimas 10 peliculas cargadas. \n"
     "4- Volver al menu inicial.\n")
@@ -106,24 +106,31 @@ def Pelicula_Especifica():
     pelicula=input("Ingrese nombre de pelicula: ")
     print()
     Peliculas=Pedir_Peliculas_A_API()
-
+    control=False
     for i in Peliculas['Movies']:
         if i['titulo'].upper() == pelicula.upper():
+            control=True
             print('Titulo: ',i['titulo']," ",'Director:',i['director']," ",'Genero: ',i['genero'])
             print()
             print('Sinopsis: ',i['sinopsis'])
             print()
-            print('Reparto')
+            print('REPARTO')
             print()
             for j in i['reparto']:
                 print(j['actor'], end=", ")
-                
-    Critica_Especifica(pelicula)
+    print()
+    if control== True:
+        Critica_Especifica(pelicula)
+    else:
+        print()
+        print("!!!No se encontro la pelicula!!!")
 
 def Critica_Especifica(titulo):
     datos=requests.get("http://127.0.0.1:5000/Comentarios")
     Comentarios=datos.json()
-    print("Criticas")
+    print()
+    print("CRITICAS")
+    print()
     print(titulo.upper())
     control=False
     for i in Comentarios['criticas']:
@@ -135,12 +142,12 @@ def Critica_Especifica(titulo):
                 print("Critica: ",j['opinion'])
     
     if control==False:
-        print("La pelicula no tiene Criticas.!!!")
-    
+        print("!!!La pelicula no tiene Criticas.!!!")
+    print()
 
 def Buscar_Pelicula_por_Actor():
     Peliculas=Pedir_Peliculas_A_API()   
-    actor=input("Ingrese el nombre del actor:")
+    actor=input("Ingrese el nombre del actor: ")
 
     Pelicula={
         "actor":"",
@@ -170,7 +177,7 @@ def Buscar_Pelicula_por_Actor():
             if i['Nombre_pelicula'].upper() == j['peliculas_actor'].upper():
                 critica.append(i)
     print()
-    print('Critica')
+    print('CRITICAS')
     print()
     for i in critica:
         if len(i['comentarios']) == 0:
@@ -186,38 +193,42 @@ def Buscar_Pelicula_por_Actor():
 def Buscar_Peliculas_del_Director():
 
     director =input("Ingrese el Nombre del Director: ")
+    print()
     Datos = requests.get("http://127.0.0.1:5000/Peliculas/"+director)
     Peliculas= Datos.json()
     print(director)
-
+    print()
     if type(Peliculas) == dict:
 
         for i in Peliculas['peliculas']:
             print(i)
     else:
         print(Peliculas)
-
+    print()
 def Buscar_Pelicula_Portada():
     Datos = requests.get("http://127.0.0.1:5000/Portadas/Peliculas")
     Portada = Datos.json()
     for i in Portada:
         print(i["titulo"])
         print(i["img"])
-
+        print()
+    print()
 def Lista_Directores():
     print("Estos son los directores presentes en la plataforma.\n")
+    print()
     datos=requests.get("http://127.0.0.1:5000/Directores")
+    print()
     directores=datos.json()
     for i in directores["directores"]:
         print(i["nombre_director"])
-
+    print()
 def Generos():
     print("Estos son los generos presentes en la plataforma.\n")
     datos=requests.get("http://127.0.0.1:5000/Generos")
     generos=datos.json()
     for i in generos["Generos"]:
         print(i["genero_pelicula"])
-
+    print()
 def Ultimas_10_Peliculas():
     Peliculas=Pedir_Peliculas_A_API()
         
@@ -230,10 +241,20 @@ def Ultimas_10_Peliculas():
         print(i['titulo'])
         print()
         print(i['sinopsis'])
-
+    print()
 #Funciones edicion/eliminacion de peliculas y comentarios
 
 def Modificar_Pelicula():
+
+    
+    while True:
+        print()
+        control=input("Esta Seguro que quiere modificar la Pelicula???: si/no: ")
+
+        if control.upper() == 'NO':
+            return
+        elif control.upper() == 'SI':
+            break
 
     pelicula = input("Ingrese el Nombre de la Pelicula a Modificar: ")
     Verificar = Existe_Pelicula(pelicula)
@@ -256,21 +277,21 @@ def Modificar_Pelicula():
             opcion = input ('Ingrese una opcion:  ')
                 
             if opcion == '1':
-                nuevo_titulo=input("Nombre de la pelicula:")
+                nuevo_titulo=input("Nombre de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['titulo'] = nuevo_titulo
                  
             elif opcion == '2':
 
-                nuevo_año=input("Año de la pelicula:")
+                nuevo_año=input("Año de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['año'] = nuevo_año
 
             elif opcion =='3':
 
-                nuevo_director=input("director de la pelicula:")
+                nuevo_director=input("director de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['director'] = nuevo_director
@@ -278,7 +299,7 @@ def Modificar_Pelicula():
             
             elif opcion =='4':
 
-                nuevo_genero=input("genero de la pelicula:")
+                nuevo_genero=input("genero de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['genero'] = nuevo_genero
@@ -286,7 +307,7 @@ def Modificar_Pelicula():
             
             elif opcion =='5':
 
-                nuevo_sinopsis=input("Sinopsis de la pelicula:")
+                nuevo_sinopsis=input("Sinopsis de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['sinopsis'] = nuevo_sinopsis
@@ -294,7 +315,7 @@ def Modificar_Pelicula():
             
             elif opcion =='6':
 
-                nuevo_img=input("Url de imagen de pelicula:")
+                nuevo_img=input("Url de imagen de pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['img'] = nuevo_img
@@ -302,7 +323,7 @@ def Modificar_Pelicula():
             
             elif opcion =='7':
 
-                nuevo_duracion=input("Tiempo de duracion de la pelicula:")
+                nuevo_duracion=input("Tiempo de duracion de la pelicula: ")
                 for i in Peliculas['Movies']:
                     if i['id'] == ID:
                         i['duracion'] = nuevo_duracion
@@ -361,7 +382,7 @@ def Cargar_Comentario():
             "opinion":""
             }
 
-        usuario=input("Ingrese ID de Usuario:")
+        usuario=input("Ingrese ID de Usuario: ")
         nombre=input("Ingrese Nombre: ")
         opinion=input("Ingrese su opinion: ")
 
@@ -377,6 +398,16 @@ def Cargar_Comentario():
 
 def Cargar_Pelicula():
 
+    
+    while True:
+        print()
+        control=input("Continuar con la carga de la nueva Pelicula???: si/no: ")
+
+        if control.upper() == 'NO':
+            return
+        elif control.upper() == 'SI':
+            break
+    print()
     titulo= input("Ingrese el nombre de la pelicula: ")
     año= input("Ingrese el año: ")
     print()
@@ -389,8 +420,8 @@ def Cargar_Pelicula():
     genero= input("Ingrese el genero: ")
     print()
     sinopsis= input("Ingrese la sinopsis: ")
-    img= input("Ingrese la ur de la portada: ")
-    duracion= input("Ingrese el tiempo de duracion:")
+    img= input("Ingrese la url de la portada: ")
+    duracion= input("Ingrese el tiempo de duracion: ")
 
     comentario={
         "id_usuario":"",
@@ -404,7 +435,7 @@ def Cargar_Pelicula():
     while op !=2:
         print()
         print("Menu Carga Actores")
-        print("1) Cargar Actor y su personaje:")
+        print("1) Cargar Actor y su personaje")
         print("2) Salir")
         
         op=input("Ingrese su opcion: ")
@@ -447,7 +478,7 @@ def Cargar_Pelicula():
     print(mensaje1,"\n")
     aux=""
     while aux!="NO":
-        aux=input("¿Desea agregar un comentario? si/no")
+        aux=input("¿Desea agregar un comentario? si/no: ")
         aux=aux.upper()
         if aux=="SI":
             comentario={
@@ -455,7 +486,7 @@ def Cargar_Pelicula():
             "nombre":"",
             "opinion":""
             }
-            usuario=input("Ingrese ID de Usuario:")
+            usuario=input("Ingrese ID de Usuario: ")
             nombre=input("Ingrese Nombre: ")
             opinion=input("Ingrese su opinion: ")
 
@@ -469,11 +500,20 @@ def Cargar_Pelicula():
             break
 
 def Eliminar_Pelicula():
+   
+    while True:
+        print()
+        control=input("Esta Seguro de Eliminar la Pelicula???: si/no: ")
+
+        if control.upper() == 'NO':
+            return
+        elif control.upper() == 'SI':
+            break
 
     titulo = input("Nombre de pelicula a eliminar: ")
-    #Variable de Control
-    
+    print()
+    #Variable de Control    
     Datos = requests.delete("http://127.0.0.1:5000/Eliminar/"+titulo)
     mensaje=Datos.json()
     print(mensaje)
-
+    print()
