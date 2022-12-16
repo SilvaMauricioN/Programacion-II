@@ -1,6 +1,5 @@
 from flask import Flask,jsonify,json, Response,request
 import json
-from http import HTTPStatus
 
 #Creo objeto flask llamado app
 app = Flask(__name__)
@@ -36,8 +35,7 @@ def Existe_Director(nueva_pelicula):
     Directores=Abrir_Directores()
     director=[]
     #Verifico si el director existe en json directores, si no existe lo actualizo con el nuevo director  
-    for i in Directores['directores']:
-        
+    for i in Directores['directores']:        
         if i['nombre_director'].upper() == nueva_pelicula["director"].upper():
             director.append(i['nombre_director'])
 
@@ -222,6 +220,12 @@ def Devolver_Generos():
     Generos=Abrir_Generos()
     return jsonify(Generos)
 
+#Devolver Comentarios
+@app.route("/Comentarios")
+def Devolver_Comentarios():
+    Comentarios=Abrir_Comentarios()
+    return jsonify(Comentarios)
+    
 #Todas las Peliculas
 @app.route("/Peliculas")
 def Devolver_Peliculas():
