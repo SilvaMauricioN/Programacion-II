@@ -23,7 +23,7 @@
                 {
                     "id_usuario":"001",
                     "nombre":"Mauricio Nicolas",
-                    "opinion":"Excelente"
+                    "opinion":"Mejor que la anterior"
                 },
                 {
                     "id_usuario":"002",
@@ -114,20 +114,37 @@
         {
             "Nombre_pelicula":"Matrix",
             "id_pelicula":"12",            
-            "comentarios":[           
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Alegoria al mito de las cavernas"
+                }
+        
             ]
         },              
         {
             "Nombre_pelicula":"Mad Max",
             "id_pelicula":"13",            
-            "comentarios":[                
+            "comentarios":[              
             ]
         },
         {
             "Nombre_pelicula":"Black Panther: Wakanda Forever",
-            "id_pelicula":"2",            
-            "comentarios":[                                
+            "id_pelicula":"14",            
+            "comentarios":[
+                {
+                    "id_usuario":"001",
+                    "nombre":"Mauricio Nicolas",
+                    "opinion":"Gran homenaje a Chadwick Boseman"
+                }
+                              
             ]
-        }         
+        },
+        {
+            "Nombre_pelicula": "Argentina, 1985",
+            "id_pelicula": "15",
+            "comentarios": []
+        }    
     ]
 }

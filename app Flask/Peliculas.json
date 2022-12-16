@@ -415,6 +415,26 @@
             "sinopsis": "a reina Ramonda (Angela Bassett), Shuri (Letitia Wright), M’Baku (Winston Duke), Okoye (Danai Gurira) y las Dora Milaje (incluida Florence Kasumba), luchan para proteger su nación de la injerencia de potencias mundiales a raíz de la muerte del rey T’Challa. Mientras los wakandianos se esfuerzan por adaptarse a su nueva etapa, los héroes deben actuar unidos, con la ayuda del Perro de la Guerra Nakia (Lupita Nyong’o) y Everett Ross (Martin Freeman), y forzar un nuevo destino para el reino de Wakanda.",
             "img": "https://pics.filmaffinity.com/black_panther_wakanda_forever-869269163-large.jpg",
             "duracion": "2h 41"
+        },
+        {
+            "año": "2022",
+            "director": "Santiago Mitre",
+            "duracion": "2hs 20m",
+            "genero": "Thriller/Drama",
+            "id": "15",
+            "img": "https://pics.filmaffinity.com/argentina_1985-430372554-mmed.jpg",
+            "reparto": [
+                {
+                    "actor": "Ricardo Darin",
+                    "personaje": "Julio Cesar strassera"
+                },
+                {
+                    "actor": "Pedro Lanzani",
+                    "personaje": "Luis Moreno Ocampo"
+                }
+            ],
+            "sinopsis": "Inspirada en la historia real del fiscal Julio Strassera, Luis Moreno Ocampo y su joven equipo jurídico que se atrevieron a acusar, contra viento y marea, a contrarreloj y bajo constante amenaza, a los altos mandos de la sangrienta dictadura militar argentina (1976-1983) en el llamado Juicio a las Juntas de mediados de los años 80. Una batalla de David contra Goliat, con los héroes menos esperados.",
+            "titulo": "Argentina, 1985"
         }
     ]
 }

@@ -23,6 +23,12 @@
         },
         {
             "genero_pelicula": "Fantastico"
-        }    
+        },
+        {
+            "genero_pelicula": " Belico"
+        },
+        {
+            "genero_pelicula": "Thriller/Drama"
+        }
     ]
 }

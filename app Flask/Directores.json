@@ -39,6 +39,10 @@
         {
             "id_director": "10",
             "nombre_director": "Ryan Coogler"
-        }     
+        },
+        {
+            "id_director": "11",
+            "nombre_director": "Santiago Mitre"
+        }    
     ]
 }
