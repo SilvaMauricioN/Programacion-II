@@ -251,12 +251,12 @@ def Peliculas_Director(Director):
         return jsonify(Pelicula)
 
 #Peliculas con imagen de portada
-@app.route("/Portada/Peliculas")
+@app.route("/Portadas/Peliculas")
 def Portadas():
 
     ImgPortada=[
     ]
-    Peliculas = Agregar_Pelicula()
+    Peliculas = Abrir_Peliculas()
     for i in Peliculas['Movies']:
         if len(i['img'])  >= 1:
 
@@ -383,5 +383,3 @@ def Nuevo_Comentario(Pelicula):
             return jsonify("Falta un campo")
     else:
         return jsonify('La pelicula NO Existe')
-
-            
