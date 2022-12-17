@@ -314,12 +314,11 @@ def Eliminar_Pelicula(Pelicula):
 def Modificar_Pelicula(Pelicula):
 
     Peliculas = Abrir_Peliculas()
-    Pelicula_A_Modificar = request.get_json()
     Verificar=Existe_Pelicula(Pelicula)
 
     if Verificar:
-
-         for i in Peliculas["Movies"]:
+        Pelicula_A_Modificar = request.get_json()
+        for i in Peliculas["Movies"]:
 
             if Pelicula in i.values():
                                 

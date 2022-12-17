@@ -7,4 +7,4 @@ Documentación postman:
 
 Dedes la aplicación de postman en la parte de colecciones ir a importar y a la sección de link y pergar el siguiente:
 
-https://api.postman.com/collections/24294880-82475db1-17c3-4ce1-8749-887f21841cdb?access_key=PMAT-01GMBX66BVJNQXM9MA8VDC0BPY
+https://api.postman.com/collections/24339817-6f9fc934-8789-4e0d-8e99-019522c0dc74?access_key=PMAT-01GMESMRXCMB72PDHVGZ5BKSGT
