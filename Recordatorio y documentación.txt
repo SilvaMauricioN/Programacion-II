@@ -1,0 +1,10 @@
+Recordatorio: en la carpeta "app Flask" estan todos los arichivos necesarios para que el programa funcione,
+solo copielo y peguelo en su entorno de flask y listo. Cabe recalcar que el programa no iniciara si no recive
+una respuesta del servidor flask, osea que este apagado. 
+
+
+Documentación postman:
+
+Dedes la aplicación de postman en la parte de colecciones ir a importar y a la sección de link y pergar el siguiente:
+
+https://api.postman.com/collections/24294880-82475db1-17c3-4ce1-8749-887f21841cdb?access_key=PMAT-01GMBX66BVJNQXM9MA8VDC0BPY
